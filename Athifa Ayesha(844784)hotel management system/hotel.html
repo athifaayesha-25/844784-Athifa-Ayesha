@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<title>online hotel information system</title>
+	<script type="text/javascript" src="screen.js"></script>
+
+	
+		
+    
+
+
+
+	
+	<style>
+		body{background-color: white;
+		}
+		
+		header{
+			color:brown;
+			background-color: lightyellow;
+			font-size: 50px;
+		}
+		h1{
+			font-size: 60px;
+			color: purple;
+		}
+
+		p{
+			font-size: 20px;
+			color: blue;
+			background-color: olive;
+		}
+		form{
+	line-height: 30px;
+	background-color:  lightblue;
+	font-size: 12px;
+}
+
+label{
+	float: left;
+	width: 250px;
+	
+}
+
+		
+
+	</style>
+</head>
+<body>
+	
+
+
+	
+
+	<header>
+	<h1><b>USER REGISTRATION SCREEN</b></h1>
+	</header>
+	<form action="manage.html" name="form" onsubmit="return validate()" >
+
+		<b><label style="text-align: left;">EMAIL ID:</label></b>
+		<input type="email" name="email" id="txtEmail" required><br><br>
+
+		<b><label style="text-align: left;">NAME:</label></b>
+		<input type="text" name="name" placeholder="User Name"><br><br>
+
+		<b><label style="text-align: left;">PASSWORD:(Maximum 8 characters and minimum 7 characters)</label></b>
+		<input type="password" id="pass1" name="password1" minlength="7" maxlength="8"><br><br><br><br>
+
+		<b><label style="text-align: left;">RETYPE PASSWORD:</label></b>
+		<input type="password" id="pass" name="password2" minlength="7" maxlength="8"><br><br><br><br>
+
+		<b><label>ADDRESS:(upto 250 characters)</label></b>
+		<textarea rows="4" cols="50" maxlength="250" required=""></textarea><br><br>
+
+        <b><label>PHONE NO:</label></b>
+		<fieldset style="width: 200px;">
+		<b>MOBILE:</b> <input type="number" name="phone" required >
+		<b>LANDLINE:</b> <input type="number" name="phone" required>
+		</fieldset><br><br>
+
+		<input type="image" src="register.jpg" value="submit" alt="REGISTER" width="100" height="48" onclick="validate()">
+		  <button type="reset">
+    <img src="reset.jpg" alt="reset" width="100" height="48" />
+ </button>
+
+
+	
+
+	
+
+		
+
+		
+	
+
+
+
+
+	</form>
+
+
+
+	<footer>
+		<p>“This website and its content is copyright
+of User Registration Screen”.</p>
+	</footer>
+
+	
+
+
+
+ 
+ 
+
+
+	
+
+
+
+
+
+</body>
+</html>
