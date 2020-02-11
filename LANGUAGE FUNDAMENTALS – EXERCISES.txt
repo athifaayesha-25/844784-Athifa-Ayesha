@@ -1,0 +1,403 @@
+LANGUAGE FUNDAMENTALS – EXERCISES
+
+1.      Write a program to accept a double value. Separate the whole value from the fractional value and store them in two variables. Display the same.
+
+
+
+import java.util.*;
+public class JavaExample1{
+public static void main(String args[]){
+double value=12.56;
+double fractional_part=value%1;
+double integral_part=value-fractional_part;
+System.out.println("Original value= " +value);
+System.out.println("fractional part= " +fractional_part);
+System.out.println("integral part= " +integral_part);
+
+}
+}
+
+
+
+2.      Write a program to accept three numbers and find the largest of three numbers using ternary operator.
+
+
+
+import java.util.*;
+public class JavaExample2{
+public static void main(String args[]){
+ int a=5, b=10, c=15, max;
+ max = (a > b) ?  
+          (a > c ? a: c) : 
+          (b> c ? b: c); 
+System.out.println("largest number among " +a+  ","  +b+  "and"  +c+  "is"  +max+  ".");
+}
+}
+
+
+
+3.      Write a program to accept a number and display whether the number is odd or even using the ternary operator.
+
+
+
+import java.util.*;
+public class Ass3{
+ public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+int n=sc.nextInt();
+String m=(n%2==0 ? "Even" : "Odd");
+System.out.println(m);
+/*if(m==1)
+System.out.println("Given number is Even");
+else
+{
+System.out.println("Given number is Odd");
+}*/
+}
+
+}
+
+
+
+
+4.      Write a program to accept three numbers and find the largest and second largest values of three numbers
+
+
+
+import java.util.*;
+public class Ass4{
+ public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+int n1=sc.nextInt();
+int n2=sc.nextInt();
+int n3=sc.nextInt();
+if((n1>n2)&&(n1>n3))
+{
+System.out.println("Large: "+n1);
+}
+else if((n2>n1)&&(n2>n3))
+{
+System.out.println("Large: "+n2);
+}
+else
+{
+System.out.println("Large: "+n3);
+}
+if(n1>n2&&n2>n3){
+System.out.println("Second Large: "+n2);}
+else if(n2>n3&&n3>n1){
+System.out.println("Second Large: "+n3);}
+else
+System.out.println("Second Large: "+n1);
+}
+}
+
+
+
+
+5.      Write a program to accept a student’s name and three marks. Display the total and average. Display result as First class, Second class, Pass class and Fails.
+
+
+
+import java.util.*;
+public class Ass5{
+ public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter name ");
+String s=sc.next();
+System.out.println("Enter marks ");
+int n1=sc.nextInt();
+int n2=sc.nextInt();
+int n3=sc.nextInt();
+int sum=n1+n2+n3;
+float avg=sum/3;
+
+System.out.println("Sum: "+sum);
+System.out.println("Avg: "+avg);
+if(avg>90)
+{
+System.out.println("First Class");
+}
+else if(avg>70)
+{
+System.out.println("Second Class");
+}
+else if(avg>35)
+{
+System.out.println("Pass");
+}
+else 
+System.out.println("Fail");
+
+}
+}
+
+
+
+6.      Write a program to accept a number and display the last digit of the number in words.
+
+
+
+import java.util.*;
+public class Ass6{
+ public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+System.out.println("enter number");
+int n1=sc.nextInt();
+int rem;
+rem=n1%10;
+System.out.println("last digit in name");
+if(rem==0){
+System.out.println("Zero");
+}
+else if(rem==1){
+System.out.println("One");
+}
+else if(rem==2){
+System.out.println("Two");
+}
+else if(rem==3){
+System.out.println("Three");
+}
+else if(rem==4){
+System.out.println("Four");
+}
+else if(rem==5){
+System.out.println("Five");
+}
+else if(rem==6){
+System.out.println("Six");
+}
+else if(rem==7){
+System.out.println("Seven");
+}
+else if(rem==8){
+System.out.println("Eight");
+}
+else if(rem==9){
+System.out.println("Nine");
+}
+}
+}
+
+
+
+7.      Write a program to accept an alphabet and display whether its a vowel or consonant
+
+
+
+import java.util.*;
+public class Ass7{
+ public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+char c=sc.next().charAt(0);
+if(c=='a'||c=='A'||c=='e'||c=='E'||c=='i'||c=='I'||c=='o'||c=='O'||c=='u'||c=='U')
+{
+System.out.println("Vowel");
+}
+else
+{
+System.out.println("consonant");
+}
+}
+}
+
+
+
+8.      Write a program to find the sum of all odd numbers from 1 to N. Accept N. Display the sum.
+
+
+
+import java.util.*;
+public class Ass8{
+ public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+System.out.println("enter number");
+int n=sc.nextInt();
+int sum=0;
+for(int i=1;i<n;i++){
+if(i%2!=0){
+sum=sum+i;
+}}
+System.out.println("Sum of odd numbers: "+sum);
+}
+}
+
+
+
+9.      Write a program to find the reverse of a number. Store the reverse value in a different variable. Display the reverse.
+
+
+
+import java.util.*;
+public class Ass9{
+ public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter number");
+int n=sc.nextInt();
+int rem=0;
+int val=0;
+while(n>0)
+{
+rem=n%10;
+val=val*10+rem;
+n=n/10;
+}
+System.out.println("reverse of the number: "+val);}
+}
+
+
+
+10.  Write a program to find the factorial of a non-negative number.
+
+
+import java.util.*;
+public class Ass10{
+ public static void main(String[] args) {
+System.out.println("Enter number");
+Scanner sc=new Scanner(System.in);
+int n=sc.nextInt();
+int fact=1;
+if(n>0)
+{
+for(int i=1;i<=n;i++){
+fact=fact*i;
+}
+System.out.println("factorial of the given number: "+fact);
+}
+}
+}
+
+
+
+11.  Write a program to generate the following series:
+
+                        1, -2, 3, -4, 5, -6, … N
+
+
+
+import java.util.*;
+public class Ass11{
+ public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter number");
+int n=sc.nextInt();
+System.out.println("Series is...");
+for(int i=1;i<=n;i++){
+
+if(i%2==0){
+System.out.print(" -"+i);
+}
+else
+{
+System.out.print(" "+i);
+}
+}
+}}
+
+
+
+
+12.  Write a program to find the sum of all the prime numbers in the range n to m.
+Display each prime number and also the final sum.
+
+
+
+import java.util.Scanner;
+public class Ass12
+{
+    public static void main(String args[])
+    {
+         int s1, s2, s3, flag = 0, i, j;
+         Scanner s = new Scanner(System.in);
+         System.out.println ("Enter the lower limit :"); 
+         s1 = s.nextInt();
+         System.out.println ("Enter the upper limit :"); 
+         s2 = s.nextInt();
+         System.out.println ("prime numbers  :");
+         for(i = s1; i <= s2; i++)
+         {
+             for( j = 2; j < i; j++)
+             {
+                 if(i % j == 0)
+                 {
+                     flag = 0;
+                     break;
+                 }
+                 else
+                 {
+                     flag = 1;
+                 }
+             }
+             if(flag == 1)
+             {
+                 System.out.print(i +" ");
+             }
+         }
+    }
+}
+
+
+
+
+13.  Write a program to store N elements in an array of integer. Display the elements. Accept a number to be searched. Display whether the number is found or not in the array (LINEAR SEARCH).
+
+
+
+import java.util.Scanner;
+public class Ass13
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter size");
+        int n=sc.nextInt();
+        int[] n1=new int[n];
+        System.out.println("enter elements");
+        for(int i=0;i<n;i++)
+        {
+        	n1[i]=sc.nextInt();
+        }
+        System.out.println("Searching element");
+        int n2=sc.nextInt();
+        for(int i=0;i<n1.length;i++) {
+        if(n1[i]==n2)
+        {
+        	System.out.println("found");
+        }
+        
+        if(n1[i]!=n2)
+        {
+        	System.out.println("not found");
+        }
+        	
+    }
+    }
+}
+
+14.  Write a program to find the factorial of a number using recursion.
+
+
+
+import java.util.Scanner;
+public class Ass14
+{
+	public static int fact(int n) {
+ 	   if(n==0) {
+ 		   return 1;
+ 	   }
+ 	   else
+ 	   {
+ 		   return (n*fact(n-1));
+ 	   }
+	}
+    public static void  main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter number");
+        int n=sc.nextInt();
+        int f=0;
+        f=fact(n);
+        	System.out.println("Factorial of the number using recursion :"+f);
+    }
+}

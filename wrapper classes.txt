@@ -1,0 +1,243 @@
+Hands-on Exercise Objective
+After completing the hands-on exercises, you will be able to:
+•	Develop simple Java program using Wrapper Classes.
+Problem Statement 1:
+Develop and simple java application to calculate the school fees for a particular student based on the grade he scored in the entrance examination.
+
+Develop  a  class  named  “Student“ with a method named calculateFeesStructure with the following parameters
+Variable Name	Data Type
+studentId	Java.lang.Long
+studentGrade	Java.lang.Character
+monthlyFees	Java.lang.Double
+isScholarshipEligible	Java.lang.Boolean
+Fees	Java.lang.Double
+
+The business logic for calculating the fees is as follows, this has to be implemented inside the method,
+
+If  studentId is not equal to 0 and  grade is equal to ‘A’ and  isScholarshipEligible is true
+fees =monthlyFees -monthlyFees *10/100 (10% exemption)
+
+Otherwise  If  studentId is not equal to 0 and  grade is equal to ‘B’ and  isScholarshipEligible is true
+fees =monthlyFees -monthlyFees * 8/100 (8% exemption)
+
+Otherwise  If  studentId is not equal to 0 and  grade is equal to ‘C’ and  isScholarshipEligible is true
+fees =monthlyFees -monthlyFees * 6/100 (6% exemption)
+
+Otherwise  If  studentId is not equal to 0 and  grade is equal to ‘D’ and  isScholarshipEligible is true
+fees=monthlyFees -monthlyFees * 4/100 (4% exemption)
+
+Otherwise
+   Display the message “Not Eligible for Exemption”.
+
+The fees should be displayed as follows,
+“<Exemption %>% of fees is exempted, the calculated fees is <fees> ”
+
+IMPORTANT NOTE: The fees printed in the message should be rounded to the nearest int value.
+
+The test cases to be executed are,
+
+Test Cases	studentId	grade	monthlyFees	isScholarshipEligible	
+Test Case 1	234	C	600	True	6 % of fees is exempted, the calculated fees is564
+Test Case 2	115	B	909.50	True	8 % of fees is exempted, the calculated fees is837.
+Test Case 3	980	G	1810	False	Not Eligible for Exemption
+In the Student   class  add a main method which sets the values and invoke the  calculateFeesStructure  in the Student  object.
+
+Problem Statement 2:
+
+Develop  a method named “compareMarks” with the following Parameters
+
+Variable Name	Data Type
+Maths	Java.lang.Long
+English	Java.lang.Double
+
+The method logic should be as follows,
+Convert the English Mark from Double to java.lang.Integer, Maths mark from Long to  java.lang.Integer and print the highest mark.
+If(English is high)
+Display “English mark is higher than Maths”
+If(Maths is high)
+Display “Maths mark is higher than English”
+If(equal)
+Display “Both Are Equal”
+
+
+NOTE:  Use the API of Wrapper objects for comparing and converting into the appropriate wrapper object. Refer the Java doc for the wrapper API’s  http://docs.oracle.com/javase/1.5.0/docs/api/
+
+Test Cases:  Execute the following test cases
+Test Cases	English	Maths	Output
+Test Case 1	85	65	English mark is higher than Maths
+Test Case 2	56	98	Maths mark is higher than English
+Test Case 3	84	84	Both Are Equal
+
+Problem Statement 3:
+
+Develop  a method named “validateFees” with the following Parameters
+
+Variable Name	Data Type
+Fees	Java.lang.Double
+
+The method logic should be as follows,
+It should check if the provided number is an infinite or not and display the byte value of the number.
+
+If(fees is infinite)
+Display “Fees is infinite”
+If(fees is not infinte)
+Display “Fees is not infinite”
+Then display the byte value.
+
+NOTE:  Use the API of Wrapper objects for performing the logic. Refer the Java doc for the wrapper API’s  http://docs.oracle.com/javase/1.5.0/docs/api/.
+
+Exercises:
+
+1.	What is the output of compiling and running the following code?
+class Test {
+public static void main(String arg[]) { Integer x = 1000;
+long y = 1000; Integer z = 1000;
+System.out.println(x==y);
+System.out.println(x==z);
+}
+}
+
+
+
+class Test {
+public static void main(String arg[]) { 
+Integer x = 1000;
+ long y = 1000; 
+Integer z = 1000;
+System.out.println(x==y); 
+System.out.println(x==z); 
+System.out.println(y==z);
+}
+ }
+
+
+/*OutPut:true
+	 false
+	 true*/
+ 
+
+ 
+2.	What is the output?
+class Tester {
+public static void main(String[] args) { Integer x = 0;
+Integer y = 0;
+for(Short z = 0; z < 5; z++) if((++x > 2) || (++y > 2)) x++;
+System.out.println(x + " " + y);
+}
+}
+
+
+
+
+3.	What is the output?
+class Titanic {
+public static void main(String[] args) { Boolean b1 = true;
+boolean b2 = false; boolean b3 = true;
+if((b1 & b2) | (b2 & b3) & b3) System.out.print("alpha ");
+if((b1 = false) | (b1 & b3) | (b1 | b2)) System.out.print("beta ");
+} }
+
+
+
+
+4.What is the output?
+class Tester {
+int doX(Long x, Long y) { return 1; } int doX(long x, long y) { return 2; }
+int doX(Integer x, Integer y) { return 3; } int doX(Number n, Number m) { return 4; } public static void main(String[] args) { new Tester().go();
+}
+void go() { short s = 7;
+System.out.print(doX(s,s) + " ");
+System.out.println(doX(7,7));
+}
+}
+
+5.  Given the code. What is the result?
+
+public class TryMe {
+Integer A;
+int a;
+public TryMe(int a) {
+this.a = A + a;
+System.out.print(this.a);
+}
+public static void main(String args[]) {
+Integer A = new Integer(1);
+TryMe t = new TryMe(A);
+}
+}
+
+6.	Create a class that performs the conversion between data type values.
+Class Name	TypeConvertor
+Method Name	binaryToLong
+Method Description	Converts the binary number to Long object
+Argument	String binaryNumber
+Return Type	Long – Long Equivalent of the binaryNumber
+Logic	Convert the binary to Long using the appropriate
+	APIs
+	
+Method Name	stringToInteger
+Method Description	Converts the string to an integer
+Argument	String integerValue
+Return Type	int – Integer Values
+Logic	Convert the string to integer using the appropriate
+	APIs
+
+7.	Create a class that finds the smallest of an array of numbers.
+
+Class Name	EvenSum
+Method Name	getSmallest
+Method Description	Finds the smallest member of an integer array
+Argument	int [ ]elements
+Return Type	int – Smallest number in the array
+Logic	Iterate through the array and find the smallest
+	element in the array.
+	
+8.  Create a class that finds the sum of elements in an int array
+	
+Class Name	ArrayManipulator
+Method Name	getArraySum
+Method Description	Finds the sum of elements in an int array
+Argument	int [ ]elements
+Return Type	int – sum of the elements in the array
+Logic	Iterate through the elements in the array and find
+	the sum of the elements
+9.	Create a class that contains method to accept an array and convert all the even members to the next odd (even+1) and all the odd numbers to the previous even (odd-1).
+
+Class Name	ArrayManipulator
+Method Name	changeNumber
+Method Description	Changes even to odd and odd to even
+Argument	int [ ]elements
+Return Type	int[ ] – The resulting array after the process
+Logic	Iterate through the array, if an even element is
+	found change it to the next odd and if an odd
+	number is found change it to the previous even.
+	For example if the array is {5,6,8,9}
+	Output : {6,5,7,10}
+
+10.	Create a class that contains method which can remove the specified character from the given character array
+
+Class Name	ArrayManipulator
+Method Name	removeCharacter
+Method Description	Removes the specified character from the character
+	array
+Argument	char[ ], char
+Return Type	char[ ] – The resulting array after the process
+Logic	Iterate through the array, remove the entered
+	character if found and return the resultant array.
+
+11.	Create a class that contains method capable of modifying in an array such a way that the new array contains elements which are the product of two neighboring columns in the original array. Last element can be left as it is.
+
+Class Name	ArrayManipulator
+Method Name	changeArrau
+Method Description	Changes each value of each column as the product
+	of two neighboring columns
+Argument	int []
+Return Type	int[ ] – The resulting array after the process
+Logic	Iterate through the array and set the values of each
+	column as the product of two neighboring columns.
+	Last element can be left as it is.
+	For Example
+	If the input array is {1,2,3,4}
+	The resulting array should be
+	{2,6,12,4}
+

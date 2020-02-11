@@ -1,0 +1,321 @@
+Exercises:
+1.    What will be the output?
+public class Tester {
+public static void main(String[] args) {
+String stmt = "Java is a Programming Language"; for (String token : stmt.split("//s")) { System.out.print(token + " ");
+}
+
+}
+
+
+
+public class STester {
+ public static void main(String[] args) 
+{
+ String stmt = "Java is a Programming Language"; 
+//System.out.println(stmt);
+for (String token : stmt.split("//s")) 
+{
+ System.out.print(token + " "); 
+}
+}
+}
+
+/* Out put: Java is a Programming Language   */
+
+
+
+2.    What will be the output
+public static void main(String[] args) {
+boolean stmt1 = "hello" == "hello";
+boolean stmt2 = new String("hello") == "hello"; boolean stmt3 = new String("hello") == new String("hello");
+System.out.println(stmt1 && stmt2 || stmt3);
+} 
+
+
+
+class STester2{
+public static void main(String[] args)
+ { 
+StringBuffer buffer1 = new StringBuffer("java"); 
+StringBuffer buffer2 = new StringBuffer(buffer1); 
+if (buffer1.equals(buffer2))
+ System.out.println("true"); 
+else System.out.println("false"); 
+}
+}
+
+
+/* Output:false 		*/ 
+
+
+
+3.    What will be the output ?
+public static void main(String[] args) { StringBuffer buffer1 = new StringBuffer("java"); StringBuffer buffer2 = new StringBuffer(buffer1); if (buffer1.equals(buffer2)) System.out.println("true");
+else
+System.out.println("false");
+}
+
+
+
+public class STester3 
+{ 
+public static void main(String[] args) 
+{ 
+StringBuffer sb1 = new StringBuffer("java");
+ StringBuffer sb2 = new StringBuffer("javaaa"); 
+boolean stmt1 =sb1.equals(sb2) ;
+ System.out.println(stmt1);
+boolean stmt2 = sb1 == sb2; 
+ System.out.println(stmt2);
+String s1 = new String("java");
+
+ String s2 = new String("java"); 
+boolean stmt3 = s1.equals(s2);
+ System.out.println(stmt3);
+ boolean stmt4 = s1 == s2; 
+ System.out.println(stmt4);
+} 
+}
+
+
+/* Output:false
+	  false
+	  true
+	  false		*/
+
+
+4.   Which of the boolean variables will evaluate to true?
+public class Tester {
+public static void main(String[] args) { StringBuffer sb1 = new StringBuffer(“java”); StringBuffer sb2 = new StringBuffer(“java”); boolean stmt1 =sb1.equals(sb2) ;
+boolean stmt2 = sb1 == sb2; String s1 = new String(“java”); String s2 = new String(“java”); boolean stmt3 = s1.equals(s2); boolean stmt4 = s1 == s2;
+}
+} 
+
+
+
+public class STester4 
+{ 
+public static void main(String[] args) 
+{
+ String str = "java"; 
+
+StringBuffer sb = new StringBuffer("java"); 
+sb.insert(9, "programming"); 
+str.concat(s2); 
+ 
+if (sb.length() < 6 || str.equals("java")) {
+System.out.println(sb); }
+ sb.delete(2, 7);
+ System.out.println(sb);
+ } }
+
+
+/* Output: If we want to insert the String "Programmin" at 9th position ...it shows the error.
+Because of already existing string contains index position at 3 ....after 4 position only we can insert the string*/
+
+
+
+
+
+5.   What is the result of compiling and running the following code?
+public class Tester {
+public static void main(String[] args) { String str = "java";
+StringBuffer sb = new StringBuffer("java"); sb.insert(9, "programming"); str.concat("exercise");
+if (sb.length() < 6 || str.equals("java")) { System.out.print(sb);
+}
+sb.delete(2, 7); System.out.print(sb);
+}
+}
+
+
+
+
+class Stester5{
+public static void main(String[] args) 
+{
+ String s1 = null; 
+String s2 =null; 
+if (s1 == s2) 
+System.out.print("A"); 
+if (s1.equals(s2))
+ System.out.print("B");
+}
+ } 
+
+
+/* Output : Nullpointer Exception
+AException in thread "main" java.lang.NullPointerException
+        at Stester5.main(Stester5.java:8) 	*/
+
+
+6.   What is the result of compiling and running the following code?
+public static void main(String[] args) { String s1 = null;
+String s2 = null; if (s1 == s2) System.out.print("A"); if (s1.equals(s2)) System.out.print("B");
+} 
+
+
+
+
+public class STester6 {
+ public static void main(String[] args) {
+ System.out.println("1");
+ try {
+
+ return; 
+} 
+catch (Exception e)
+ {
+ System.out.println("2"); 
+} 
+finally
+ { 
+System.out.println("3"); 
+} 
+System.out.println("4");
+ } 
+}
+}
+
+
+/*  Output: 1     4	
+// what are the data we can kept in finally black 
+that can compulsory excuted....even if it had exceptions	*/ 
+
+
+
+7.   What is the result of compiling and running the following code?
+public class Tester {
+public static void main(String[] args) {
+System.out.print(“1”);
+try {
+return;
+} catch (Exception e) {
+System.out.print(“2”);
+} finally {
+System.out.print(“3”);
+}
+System.out.print(“4”);
+}
+}
+
+
+
+
+
+
+
+
+
+8.    Create a method which accepts a string and inserts a character at a specified position.
+Class Name                                 StringModifier
+Method Name                             insertCharacter
+Method Description                    Accepts a String and insert a character at a specified position.
+Argument                                    String string , char c, int position
+Return Type                                String : Resulting String after the insertion
+Logic                                           Accepts a String and insert a character at a specified position.
+
+
+
+import java.util.*;
+class String8
+{
+public static String addChar(String str, char ch, int position) {
+    StringBuilder sb = new StringBuilder(str);
+    sb.insert(position, ch);
+    return sb.toString();
+}
+public static void main(String args[]){
+Scanner sc=new Scanner(System.in);
+String str=sc.next();
+char ch=sc.next().charAt(0);
+System.out.println("enter position");
+int position=sc.nextInt();
+System.out.println(addChar(str,ch,position));
+}
+}
+
+
+
+
+9.    Create a class containing method counts the occurrence of a character in a String
+Class Name                                  CharacterCounter
+Method Name                             countCharacter
+Method Description                    Accepts a String and a character and count the number of occurrence of the character in the entered String
+Argument                                    String string, char ch
+Return Type                                int count
+Logic                                           Accept a String and Character
+Count the number of occurrence of the character in the String and return the count value. 
+
+
+import java.util.*;
+class String9
+{  
+     public static void main(String[] args) {  
+Scanner sc=new Scanner(System.in);
+        String str = sc.next();  
+        int[] freq = new int[str.length()];  
+        int i, j;  
+          
+        //Converts given string into character array  
+        char string[] = str.toCharArray();  
+          
+        for(i = 0; i <str.length(); i++) {  
+            freq[i] = 1;  
+            for(j = i+1; j <str.length(); j++) {  
+                if(string[i] == string[j]) {  
+                    freq[i]++;  
+                      
+                    //Set string[j] to 0 to avoid printing visited character  
+                    string[j] = '0';  
+                }  
+            }  
+        }  
+          
+        //Displays the each character and their corresponding frequency  
+        System.out.println("Characters and their corresponding frequencies");  
+        for(i = 0; i <freq.length; i++) {  
+            if(string[i] != ' ' && string[i] != '0')  
+                System.out.println(string[i] + "-" + freq[i]);  
+        }  
+    }  
+}  
+
+
+
+
+10.  Create a class containing method which can accepts two string and a character and insert the second string in the position of the character if present in first string
+Cass Name                                  StringManager
+Method Name                             insertString
+Method Description                    Accepts two Strings and a character and  insert the second string in the position of the character if present in first string
+
+Argument                                    String string1, String string2, char ch
+Return Type                                String
+Logic                                           Accepts two Strings and a character and  insert the second string in the position of the character if present in first string.
+For Example
+If string1=”Hello World”
+string2=”java”
+ch=’W’
+
+Output should be “Hello JavaWorld”
+
+
+
+import java.util.*;
+class String10{
+public static void main(String args[]){
+
+Scanner sc=new Scanner(System.in);
+System.out.println("enter ID");
+int id=sc.next();
+System.out.println("enter Name");
+String name=sc.nextLine();
+System.out.println("enter Address");
+String address=sc.nextLine();
+System.out.println("enter Phone number");
+int number=sc.next();
+
+}
+}
+}
+}

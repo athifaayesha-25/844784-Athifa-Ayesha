@@ -1,0 +1,812 @@
+Exercises:
+
+1.  What is the expected output?
+
+
+class Plant { Plant() {
+System.out.println("Plant created");
+}
+}
+class Tree extends Plant { Tree() {
+System.out.println("Tree created"); super();
+}
+}
+public class Test {
+public static void main(String args[]) { Tree tree = new Tree();
+}
+}
+
+
+
+
+class Plant 
+{
+ 	Plant() 
+	{ 
+		System.out.println("Plant created"); 
+	}
+ } 
+class Tree extends Plant 
+{ 
+	Tree()
+ 	{
+super(); 
+		 System.out.println("Tree created"); 
+		
+	}
+ } 
+public class Test1 
+{
+	 public static void main(String args[]) { 
+	 Tree tree = new Tree(); 
+	}
+ } 
+
+
+/* Output:call to super(); must be in first statement in constuctor     */
+
+
+
+
+2.  What is the result of compiling and running the following code?
+
+class Base {
+private Base() {System.out.print("Base");}
+}
+public class Derived extends Base {
+public Derived() {System.out.print("Derived");} public static void main(String[] args) {
+new Derived();
+}
+}
+
+
+class Base 
+{ 
+	 private Base() 
+	{
+		System.out.print("Base");
+	}
+ }
+	 public class Derived extends Base 
+	{
+		 Derived() 
+		{
+			System.out.print("Derived");
+		}
+			 public static void main(String[] args) 
+			{
+ 				new Derived(); 
+			}
+ } 
+
+
+/*   Output:Derived.java:11: error: Base() has private access in Base
+                {     */
+
+
+
+
+3.	Can the following interface declaration compile? 
+
+abstract interface Bendable { final int x = 2009;
+
+void method1() ;
+public static class Angle {}
+}
+
+
+
+abstract interface Bendable
+ {
+ final int x = 2009;  
+void method1() ; 
+public static class Angle {
+}
+}
+
+/* Output: we just compile the code ....we cann't run the code without main...    */ 
+
+
+
+
+4.	Fix compilation errors if in the following code snippet 
+
+abstract class AirPlane { abstract void fly();
+void land() { System.out.print("Landing..");
+}
+}
+class AirJet extends AirPlane { AirJet() {
+super();
+}
+void fly() { System.out.print("Flying..");
+}
+abstract void land() ;
+}
+
+
+
+
+
+
+
+5.  What is the expected output?
+
+interface Foldable {
+
+public void fold() throws Exception ;
+
+}
+
+class Paper implements Foldable { public void fold() { System.out.print("Fold");
+
+}
+
+}
+
+public class Tester {
+
+public static void main(String args []) { Foldable obj1 = new Paper(); obj1.fold();
+
+Paper obj2 = new Paper(); obj2.fold();
+
+}
+
+}
+
+
+
+import java.util.*;
+interface Foldable 
+{ 
+ public void fold() throws Exception ;
+ } 
+class Paper implements Foldable 
+{
+ public void fold() 
+{
+ System.out.print("Fold");
+ }
+ } 
+public class Tester2
+{ 
+public static void main(String args [])throws Exception 
+ { 
+Foldable obj1 = new Paper(); 
+obj1.fold()  ;
+ Paper obj2 = new Paper();
+obj2.fold();  
+}
+ }
+
+
+/* Output: we must throws the Exception in main method then only we get the output      
+
+6.	Will the following code compile? 
+
+class Creature { void grow() {
+
+}
+
+}
+
+class Bird extends Creature { void fly() {
+
+}
+
+}
+
+class Falcon extends Bird { void hunt() {
+
+}
+
+}
+
+public class Tester {
+
+public static void main(String[] args) { Creature c1 = new Bird();
+
+Falcon c2 = new Falcon(); Falcon c3=new Bird(); Falcon c4=new Creature(); Bird c5=new Falcon(); Bird c6=new Creature();
+
+}
+
+}
+
+
+
+class Creature { 
+void grow()
+ {
+  }
+} 
+class Bird extends Creature { 
+void fly() 
+{ 
+}
+ } 
+class Falcon extends Bird {
+ void hunt() {
+ }
+ }
+ public class Tester3 
+{
+ public static void main(String[] args) 
+{ 
+Creature c1 = new Bird(); 
+Falcon c2 = new Falcon();
+ Falcon c3=new Bird(); 
+Falcon c4=new Creature(); 
+Bird c5=new Falcon(); 
+Bird c6=new Creature(); 
+}
+ }
+
+/* OutPut:Compile time Error:
+Tester3.java:21: error: incompatible types: Bird cannot be converted to Falcon
+ Falcon c3=new Bird();
+           ^
+Tester3.java:22: error: incompatible types: Creature cannot be converted to Falcon
+Falcon c4=new Creature();
+          ^
+Tester3.java:24: error: incompatible types: Creature cannot be converted to Bird
+Bird c6=new Creature();
+Parent class is not refer to the child class  */
+
+
+
+7.  What is the result of compiling and running the following code?
+
+class Creature { String getName() { return "Creature";
+
+}
+
+}
+
+class Bird extends Creature { String getName() {
+
+return "Bird";
+
+}
+
+boolean hasFeather(){ return true;
+
+}
+
+}
+
+public class Tester {
+
+public static void main(String[] args) { Creature c1=new Bird(); System.out.println(c1.getName()); System.out.println(c1.hasFeather()); Creature c2=new Creature(); System.out.println(c2.getName());
+
+}
+
+}
+
+
+
+class Creature { 
+String getName() {
+ return "Creature"; 
+}
+ }
+ class Bird extends Creature 
+{
+ String getName() 
+{
+ return "Bird"; 
+}
+ boolean hasFeather()
+{
+ return true; 
+}
+ }
+ public class Tester4
+{
+ public static void main(String[] args) 
+{
+ Creature c1=new Bird(); 
+System.out.println(c1.getName()); 
+System.out.println(c1.hasFeather()); 
+Creature c2=new Creature();
+ System.out.println(c2.getName()); 
+//System.out.println(c2.hasFeather()); 
+} }
+
+
+/* Output:Tester4.java:23: error: cannot find symbol
+System.out.println(c1.hasFeather());
+                     ^
+  symbol:   method hasFeather()
+  location: variable c1 of type Creature
+*/
+
+
+
+
+8.  What is the output?
+
+class Employee{ String empId;
+
+Employee(String empId){ this.empId=empId;
+
+System.out.println(“Name : ”+ this.empId);
+
+}
+
+}
+
+class Manager extends Employee{ int salary;
+
+Manager(String name, int salary){ this.salary=salary;
+
+System.out.println(“Salary : ”+ this.salary);
+
+}
+
+}
+
+public static void main(String [] args){ Manager manager=new Manager();
+
+}
+
+}
+
+
+
+class Employee{ 
+String empId; 
+Employee(String empId){ 
+this.empId=empId; 
+System.out.println(this.empId); 
+}
+ }
+ class Manager extends Employee{ 
+int salary;
+ Manager(String name, int salary)
+{ 
+this.salary=salary; 
+System.out.println(this.salary);
+ }
+ }
+class M{
+ public static void main(String [] args){ 
+Manager manager=new Manager(); 
+}
+ }
+
+
+
+/* Output: Compile time error */
+
+
+9.  Will the following code compile
+
+interface Colorable {} class Vehicle {}
+
+class Car extends Vehicle implements Colorable {} public class Tester {
+
+public static void main(String[] args) { Vehicle a = new Car();
+
+Colorable i = (Colorable) a; Vehicle b = new Vehicle(); Colorable j = (Colorable) b;
+
+}
+
+}
+
+
+
+interface Colorable {
+
+ }
+ class Vehicle {
+}
+ class Car extends Vehicle implements Colorable 
+{
+}
+ public class Tester5 
+{
+ public static void main(String[] args) throws Exception 
+{
+ Vehicle a = new Car();
+ Colorable i = (Colorable) a; 
+Vehicle b = new Vehicle(); 
+Colorable j = (Colorable) b; } } 
+
+/* OutPut:Exception in thread "main" java.lang.ClassCastException: Vehicle cannot be cast to Colorable
+        at Tester5.main(Tester5.java:16)  */
+
+
+
+
+10. What is the result of compiling and running the following code?
+
+interface Colorable { }
+
+interface Bouncable extends Colorable { } class Super implements Bouncable { }
+
+class Sub extends Super implements Bouncable { } class Individual { }
+
+public class Tester {
+
+public static void main(String[] args) { System.out.print(new Sub() instanceof Super); System.out.print(new Sub() instanceof Colorable); System.out.print(new Super() instanceof Sub); System.out.print(new Individual() instanceof Super);
+
+}
+
+}
+
+
+
+interface Colorable {
+ }
+ interface Bouncable extends Colorable { 
+} 
+class Super implements Bouncable { 
+}
+ class Sub extends Super implements Bouncable { 
+}
+ class Individual { 
+}
+ public class Tester6 { 
+public static void main(String[] args) { 
+System.out.print(new Sub() instanceof Super); 
+System.out.print(new Sub() instanceof Colorable); 
+System.out.print(new Super() instanceof Sub); 
+System.out.print(new Individual() instanceof Super); 
+}
+ } 
+
+
+/* Output:Tester6.java:16: error: incompatible types: Individual cannot be converted to Super
+System.out.print(new Individual() instanceof Super);
+*/
+
+
+11. What is the result of compiling and running the following code?
+public class Tester { int x = 12;
+static Tester reset( Tester obj) { obj = null;
+
+return obj;
+
+}
+
+public static void main(String[] args) { Tester o1 = new Tester();
+
+o1 = reset(o1); System.out.print(o1.x);
+
+}
+
+}
+
+
+
+
+
+12. What is the result of compiling and running the following code?
+
+public class A {
+
+private void printName(){
+
+System.out.println(“Value-A”);
+
+}
+
+}
+
+public class B extends A{ public void printName(){
+
+System.out.println(“Name-B”);
+
+}
+
+}
+
+public class Test{
+
+public static void main (String[] args) { B b = new B();
+
+b.printName();
+
+}
+
+}
+
+
+
+
+class A 
+{
+ private void printName()
+{
+System.out.println("Value-A"); 
+} 
+}
+ class B extends A
+{ 
+ void printName()
+{ 
+System.out.println("Name-B"); 
+} 
+} 
+class Test2
+{
+ public static void main (String[] args) 
+{ 
+B b = new B(); 
+b.printName();
+ } 
+}
+
+/* Output:if we the public we got the error......*/
+
+
+Hands-on Exercise Objective
+After completing the hands-on exercises, you will be able to:
+•	Implement Inheritance in your program
+•	Apply method overriding concept in inheritance
+Scenario: In a company there are employees with two designations Manager and Trainee. Both employees share the same set of attributes and basic salary calculation logic is same but the basic salary of trainee and manager are different.
+The Manager has a travel allowance equal to 15% of the basic salary, whereas all the other employees the travel allowance is 10% of the basic salary. Write a program to maintain the entities using inheritance.
+
+Problem Statement 1:
+1.	Create a class Employee with the following instance variables.
+
+Instance variables 	Data type
+employeeId	long
+employeeName	String
+employee Address	String
+employee Phone	Long
+basicSalary	double
+specialAllowance	double  default value- 250.80
+Hra	double,default value- 1000.50
+
+
+
+import java.util.*;
+class Inheritence1{
+public static void main(String args[]){
+
+Scanner sc=new Scanner(System.in);
+System.out.println("enter ID");
+int id=sc.nextInt();
+System.out.println("enter Name");
+String name=sc.next();
+System.out.println("enter Address");
+String address=sc.next();
+System.out.println("enter Phone number");
+long number=sc.nextLong();
+System.out.println("enter basic salary");
+double basic =sc.nextDouble();
+double specialAllowance=250.80;
+System.out.println("SpecialAllowance:  "+specialAllowance);
+double hra=1000.50;
+
+System.out.println("HRA: "+hra);
+}
+}
+
+
+2.	Create an overloaded constructor in the employee class, which takes the below constructor parameters and initializes them to their respective instance variables.
+
+Constructor parameter	Instance Variable
+Id	employeeId
+Name	employeeName
+address	employeeAddress
+phone	employeePhone
+
+
+
+import java.util.*;
+class Inheritence2{
+int id;
+long number;
+String name;
+String Address;
+ Inheritence2(int id1,long number1,String name1,String Address1)
+{
+ id=id1;
+ number=number1;
+ name=name1;
+ Address=Address1;
+}
+ Inheritence2()
+{
+}
+}
+class Inher2{
+public static void main(String args[])
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("enter ID");
+int id=sc.nextInt();
+System.out.println("enter Name");
+String name=sc.next();
+System.out.println("enter Address");
+String address=sc.next();
+System.out.println("enter Phone number");
+long number=sc.nextLong();
+System.out.println("Employee Details :  id: "+id+",  Name  :"+name+",  Address  :"+address+",  PhoneNumber  :"+number);  
+}
+}
+
+
+3.	Create a method calculateSalary in which the basic salary needs to be calculated as below.
+
+salary =  basicSalary + ( basicSalary * specialAllowance/100) + ( basicSalary * hra/100); 
+The calculated salary should be displayed in the console.
+       NOTE: salary is a local variable.
+
+
+
+import java.util.*;
+class Inheritence3{
+public static int calculateSalary(int salary,int basicSalary,int specialAllowance,int hra)
+{
+salary =  basicSalary + ( basicSalary * specialAllowance/100) + ( basicSalary * hra/100); 
+return salary;
+}
+
+public static void main(String args[])
+{
+Scanner sc=new Scanner(System.in);
+int salary=0;
+System.out.println("Enter basic salary");
+int basicSalary=sc.nextInt();
+System.out.println("Enter  specialAllowance");
+int  specialAllowance=sc.nextInt();
+System.out.println("Enter Hra");
+int hra=sc.nextInt();
+System.out.println("final salary of employee is : "+calculateSalary(salary, basicSalary,specialAllowance,hra));
+}}
+
+
+4.	Create the sub classes Manager and Trainee with base class Employee. Create overloaded constructors which takes the below parameters and initializes them to their respective variables in the super class.
+
+Constructor parameter	Instance Variable
+id	employeeId
+Name	employeeName
+address	employeeAddress
+phone	employeePhone
+salary	basicSalary
+
+
+class Employee{ 
+String empId; 
+Employee(String empId){ 
+this.empId=empId; 
+System.out.println(this.empId); 
+}
+ }
+ class Manager extends Employee{ 
+int salary;
+ Manager(String name, int salary)
+{ 
+this.salary=salary; 
+System.out.println(this.salary);
+ }
+ }
+class M{
+ public static void main(String [] args){ 
+Manager manager=new Manager(); 
+}
+ }
+
+
+
+/* Output: Compile time error */
+
+5.	Create a class “InheritanceActivity.java” with a main method which performs the below functions,
+
+Test case #1:
+•	Create an instance of Manager class by calling the overloaded constructor with the below parameters,
+
+Constructor parameter	Instance Variable
+id	126534
+Name	"Peter"
+address	"Chennai India”
+phone	237844
+salary	65000
+
+•	Invoke the calculateSalary method of the manager object. 
+The salary calculated should be printed in the console.
+
+
+
+import java.util.*;
+class Employee{
+   //Overridden method
+   public void salary()
+   {
+Scanner sc=new Scanner(System.in);
+double f;
+int b=sc.nextInt();
+f = 10/100*b;
+      System.out.println("employee salary "+f);
+   }
+}
+class Manager1 extends Employee{
+   //Overriding method
+   public void salary(){
+//double f;
+//int b=sc.nextInt();
+//f = 10/100*b;
+      System.out.println("manager salary "+f);
+     
+   }
+   public static void main( String args[]) {
+      Manager obj = new Manager();
+      //This will call the child class version of eat()
+      obj.salary();
+   }
+}
+
+
+Test case #2:
+•	Create an instance of Trainee class by calling the overloaded constructor with the below parameters,
+Constructor parameter	Instance Variable
+id	29846
+Name	"Jack"
+address	"Mumbai India”
+phone	442085
+salary	45000
+
+•	Invoke the calculateSalary method of the trainee object. 
+The salary calculated should be printed in the console.
+
+
+import java.util.*;
+class Base{
+int id;
+String name,address;
+long number;
+double basic;
+Base(int id,String name,String address,long number,double basic){
+this.id=id;
+this.name=name;
+this.address=address;
+this.number=number;
+this.basic=basic;
+}
+
+class Manager extends Base{
+Manager()
+{
+}
+}
+class Trainee extends Base{
+Trainee()
+{
+}
+}
+class Inher4{
+public static void main(String args[]){
+Scanner sc=new Scanner(System.in);
+System.out.println("enter ID");
+int id=sc.nextInt();
+System.out.println("enter Name");
+String name=sc.next();
+System.out.println("enter Address");
+String address=sc.next();
+System.out.println("enter Phone number");
+long number=sc.nextLong();
+System.out.println("enter basic salary");
+double basic =sc.nextDouble();
+System.out.println("Values"+Base(id,name,address,number,basic));
+}
+}
+}
+
+
+Problem Statement 2:
+1.	Add a method called calculateTransportAllowance in Employee class which should calculate the transport allowance by calculating 10% (default allowance) of the salary. Print the salary after calculating. 
+transportAllowance = 10/100*basicSalary.
+
+
+
+
+2.	For a manager, the transportation allowance is 15% of the basic salary. So override the calculateTransportAllowance method in Manager class which should calculate the transport allowance as 15% of the base salary. Print the salary after calculating. 
+
+transportAllowance = 15*basicSalary /100.
+
+3.	For a trainee, the transport allowance is same as the default allowance; the method calculateTransportAllowance in the base class can be used. 
+
+4.	Invoke the calculateTransportAllowance for the manager and trainee class in the main method of  InheritanceActivity.java.
+
