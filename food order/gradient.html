@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>animations</title>
+
+
+ <!--   <style>
+	#grad1{
+		height: 100px;
+		background: -webkit-linear-gradient(red,green);
+		background: -o-linear-gradient(red,green);
+		background: -moz-linear-gradient(red,green);
+		background:linear-gradient(red,green);
+	}
+</style>
+
+</head>
+<body>
+
+<h3>linear gradient-top to bottom</h3>
+<p>this linear gradient starts at the top.it starts red transitioning to green.</p>
+<div id="grad1"></div>
+
+
+</body>   -->
+
+
+
+ <!--   <style>
+	#grad1{
+		height: 100px;
+		background: -webkit-linear-gradient(left,red,green);
+		background: -o-linear-gradient(right,red,green);
+		background: -moz-linear-gradient(right,red,green);
+		background:linear-gradient(to right,red,green);
+	}
+</style>
+
+</head>
+<body>
+
+<h3>linear gradient-top to bottom</h3>
+<p>this linear gradient starts at the top.it starts red transitioning to green.</p>
+<div id="grad1"></div>
+
+
+</body>  -->
+
+
+ <!--   <style>
+	#grad1{
+		height: 100px;
+		background: -webkit-radial-gradient(blue,green,red);
+		background: -o-radial-gradient(blue,green,red);
+		background: -moz-radial-gradient(blue,green,red);
+		background:radial-gradient(blue,green,red);
+	}
+</style>
+
+</head>
+<body>
+
+<h3>radial gradient differently spaced color stops</h3>
+<div id="grad1"></div>
+
+
+</body>  -->
+
+
+ <!--  <style>
+	#grad1{
+		height: 100px;
+		background: -webkit-radial-gradient(blue,green,red);
+		background: -o-radial-gradient(blue,green,red);
+		background: -moz-radial-gradient(blue,green,red);
+		background:radial-gradient(blue 5%,green 15%,red 60%);
+	}
+</style>
+
+</head>
+<body>
+
+<h3>radial gradient differently spaced color stops</h3>
+<div id="grad1"></div>
+
+
+</body>  -->
+
+
+
+<!--  <style>
+	div{
+		width: 100px;
+		height: 100px;
+		background: orange;
+		-webkit-transition:width 1s;
+		transition: width 1s;
+	}
+
+	div:hover{
+		width: 300px;
+	}
+</style>
+
+<body>
+	
+	<div></div>
+
+	<p>move the cursor over the div element above to see the transition effect</p>
+</body>  -->
+
+
+  <!--  <style> 
+div {
+	padding: 15px;
+  width: 150px;
+  height: 100px;
+  background: violet;
+  -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+  transition: width 2s, height 2s, transform 2s;
+}
+
+div:hover {
+  width: 300px;
+  height: 200px;
+  -webkit-transform: rotate(360deg); 
+  transform: rotate(360deg);
+}
+</style>
+</head>
+<body>
+
+<div><b>cognizant.com</b><p>move your cursor on me to see the effect</p></div>
+</body>  -->
+
+
+<!--   <style>
+	.tooltip{
+		position: relative;
+		display: inline-block;
+		border-bottom: 1px dotted black;
+	}
+
+	.tooltip .tooltiptext{
+		visibility: hidden;
+		width: 120px;
+		background-color: red;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px 0;
+		position: absolute;
+		z-index: 1;
+		bottom: 100%;
+		left:50%;
+		margin-left: -60px;
+
+	}
+
+	.tooltip:hover .tooltiptext{
+		visibility: visible;
+	}
+</style>
+
+<body style="text-align: center;">
+	<h2>top tooltip example</h2>
+	<p>move your mouse cursor over the below heading</p>
+	<div class="tooltip"><strong>welcome to cognizant</strong>
+	<span class="tooltiptext">cognizant technology solutions</span>
+    </div>
+</body>  -->
+
+
+<!--  <style>
+	.tooltip{
+		position: relative;
+		display: inline-block;
+		border-bottom: 1px dotted black;
+	}
+
+	.tooltip .tooltiptext{
+		visibility: hidden;
+		width: 120px;
+		background-color: red;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px 0;
+		position: absolute;
+		z-index: 1;
+		bottom: 100%;
+		left:50%;
+		margin-left: -60px;
+		opacity: 0;
+        transition: opacity 1s;
+
+	}
+
+	.tooltip:hover .tooltiptext{
+		visibility: visible;
+		opacity: 1;
+	}
+</style>
+
+<body style="text-align: center;">
+	<h2>fade in tooltip example</h2>
+	<p>move your mouse cursor over the below heading</p>
+	<div class="tooltip"><strong>welcome to cognizant</strong>
+	<span class="tooltiptext">cognizant technology solutions</span>
+    </div>
+</body>  -->
+
+
+<!--  <style>
+
+	.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+  .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+
+
+	.tooltip .tooltiptext::after{
+		content: " ";
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		margin-left:-5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext{
+	visibility: visible;
+} 
+
+</style>
+<body style="text-align: center;">
+	<h2>top arrow example</h2>
+	<p>move your mouse cursor over the below heading</p>
+	<div class="tooltip"><strong>welcome to cognizant</strong>
+		<span class="tooltiptext">cognizant technology solutions</span>
+	</div>
+</body>  -->
+
+
+ <!-- <style>
+	#grad1{
+		height: 500px;
+		background: -webkit-linear-gradient(left,red,green);
+		background: -o-linear-gradient(right,red,green);
+		background: -moz-linear-gradient(right,red,green);
+		background:linear-gradient(to right,yellow,pink);
+		opacity:1;
+		text-align:center;
+		height: 500px;
+}
+
+img {
+  opacity: 0.5;
+  filter: alpha(opacity=50); 
+}
+
+
+</style>
+
+</head>
+<body>
+
+<h3>linear gradient-top to bottom</h3>
+<p>this linear gradient starts at the top.it starts red transitioning to green.</p>
+<div id="grad1"><img src="rose.jpg" width="200px" height="500px"  alt="image"></div>
+
+
+</body>  -->
+
+ <style>
+
+	.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+  .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+
+
+	.tooltip .tooltiptext::after{
+		content: " ";
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		margin-left:-5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent red transparent;
+}
+
+.tooltip:hover .tooltiptext{
+	visibility: visible;
+} 
+
+</style>
+<body style="text-align: center;">
+	<h2>top arrow example</h2>
+	<p>move your mouse cursor over the below heading</p>
+	<div class="tooltip"><strong>welcome to cognizant</strong>
+		<span class="tooltiptext">cognizant technology solutions</span>
+	</div>
+</body>
+
+
+
+
+
+
+</html>
