@@ -1,0 +1,390 @@
+----------------------------PROBLEM STATEMENTS ON COLLECTIONS-----------------
+---------------------------**********************************-----------------
+1.Create a class with a method which can remove all the elements from a list
+ other than the collection of elements specified.
+
+Class Name :ListManager
+
+Method Name: removeElements
+ 
+Method Description : Remove all the elements from a list other than the 
+collection of elements specified. 
+
+Argument: List<String> list1, List<String> list2;
+
+Return Type : List- ArrayList contains the resulting List after the
+ removal process.
+
+Logic : Accept two List objects list1 and list2 and remove all the elements
+ from list 1 other than the elements contained in list2.
+This should be done in single step process without using loop.  
+
+
+
+import java.util.*;
+
+public class ListManager
+{
+public static void main(String args[])
+{
+
+List<String> List1 = new ArrayList<String>();
+List<String> List2 = new ArrayList<String>();
+
+List1.add("one");
+List1.add("two");
+List1.add("three");
+
+List2.add("one");
+List2.add("two");
+List2.add("three");
+List2.add("four");
+
+System.out.println(List1);
+System.out.println(List2);
+
+removeElements(List1,List2);
+System.out.println(List1);
+}
+
+public static List<String> removeElements(List<String>  List1,List<String> List2)
+{
+List<String> List3=new ArrayList<String>();
+List1.retainAll(List2);
+return List1;
+}
+}
+-----------------------------------------------------------------
+2. Create a class that can accept an array of String objects and  return them
+ as a sorted List 
+
+Class Name 		: ListManager
+Method Name 		: getArrayList 
+Method Description 	                   : Converts the String array to ArrayList and sorts it
+Argument		                   : String []elements  
+Return Type 		: List- ArrayList containing the elements of the String array in sorted order 
+Logic 			: Load the elements in to an ArrayList and sort it. 
+
+
+
+
+import java.util.ArrayList;
+import java.util.Collections;  
+
+public class ListManager1{
+  public static void main(String[] args) {
+    ArrayList<String> vegetables = new ArrayList<String>();
+    vegetables.add("carrot");
+    vegetables.add("cucumber");
+    vegetables.add("potato");
+    vegetables.add("ladies finger");
+    Collections.sort(vegetables);  
+    for (String i : vegetables) {
+      System.out.println(i);
+    }
+  }
+}
+
+--------------------------------------------------------
+3. Create a method that returns collection that contain only unique String object in the sorted order. 
+
+Class Name 		: UniqueCollection 
+Method Name 		: getCollection 
+Method Description 	: Accepts a String array and load the elements into a collection that can hold only unique element in a sorted order. 
+Argument		: String []elements 
+Return Type		: Interface type of the Collection used
+Logic			: Accept a String array, convert it to a collection of unique elements stored in sorted order and return the results. 
+
+
+
+import java.util.Comparator;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+public class UniqueCollection1 {
+    public static void main(String args[]) {
+   
+        SortedSet<String> fruits = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+
+        
+  
+        fruits.add("Banana");
+        fruits.add("Apple");
+        fruits.add("Pineapple");
+        fruits.add("Orange");
+
+        System.out.println("Fruits Set : " + fruits);
+
+       
+        fruits.add("banana");
+        System.out.println("After adding \"banana\" : " + fruits);
+    }
+}
+
+-------------------------------------------------------------
+4. Create a class which accepts a HashMap and returns the keys in the Map 
+
+Class Name 		: MapManager   
+Method Name 		: getKeys 
+Method Description 	: Returns the keys in the hasp map 
+Argument 		: HashMap 
+Return Type		: Set 
+Logic 			: Retrieve the keys in hash map and return the set of keys 
+
+
+
+import java.util.HashMap;
+
+
+public class MapManager1{
+  public static void main(String args[]) {
+
+   
+    HashMap<String, Integer> people = new HashMap<String, Integer>();
+
+   
+    people.put("John", 32);
+    people.put("Steve", 30);
+    people.put("Angie", 33);
+
+    for (String i : people.keySet()) {
+      System.out.println("Name: " + i + " Age: " + people.get(i));
+    }
+  }
+}
+
+
+-------------------------------------------------------------
+
+5. Create a method that returns the current date in the format specified 
+
+Class Name		: DataGenerator 
+Method Name		: getDate 
+Method Description	: Returns the current date 
+Argument 		: String format 
+Return Type		: String date 
+Logic			: Return the current date in the specified format
+
+
+
+
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+public class DataGenerator {
+   public static void main(String[] args) {
+       //getting current date and time using Date class
+       DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+       Date dateobj = new Date();
+       System.out.println(df.format(dateobj));
+
+       /*getting current date time using calendar class 
+        * An Alternative of above*/
+       Calendar calobj = Calendar.getInstance();
+       System.out.println(df.format(calobj.getTime()));
+    }
+}
+
+-----------------------------------------------------------------
+6. Create a method that calculates the age of a person based on his date of birth 
+
+Class Name 		: AgeCalculator  
+Method Name 		: calculateAge 
+Method Description	: Returns the age of the person 
+Argument String 	: dob,String format 
+Return Type 		: int age 
+Logic			: Returns the age of the person based on his date of birth 
+
+
+
+import java.time.Period;
+import java.util.Calendar;
+import java.util.Date;
+
+public class AgeCalculator {
+ public static void main(String[] args) throws ParseException {
+  //direct age calculation 
+  LocalDate l = LocalDate.of(1998, 04, 23); 
+  LocalDate now = LocalDate.now();
+  Period diff = Period.between(l, now); //difference between the dates is calculated
+  System.out.println(diff.getYears() + "years" + diff.getMonths() + "months" + diff.getDays() + "days");
+
+
+  String s = "1994/06/23";
+  SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+  Date d = sdf.parse(s);
+  Calendar c = Calendar.getInstance();
+  c.setTime(d);
+  int year = c.get(Calendar.YEAR);
+  int month = c.get(Calendar.MONTH) + 1;
+  int date = c.get(Calendar.DATE);
+  LocalDate l1 = LocalDate.of(year, month, date);
+  LocalDate now1 = LocalDate.now();
+  Period diff1 = Period.between(l1, now1);
+  System.out.println("age:" + diff1.getYears() + "years");
+ }
+}
+
+----------------------------------------------------------------------
+7. Government has announced a rule stating that all the citizens who are 18 years and above(>=18)
+are eligible to get a voter's card.The details of the residents and their date of births
+are stored in a hash map. Write a method which accepts the residents details as
+Hashmap and return the names of the people eligible for the voter's card as an arraylist.
+The date of birth is stored in dd/MM/yyyy format.
+
+Input Specification:
+Input1: HashMap<string,string>
+Output: Arraylist<string>
+
+Input2:{'aruna': '12/04/1998','lata':'24/03/1987'}
+Output:[arun,lata]</string></string,string>
+
+
+
+
+
+
+
+---------------------------------------------------------------------
+8. Given a string array as input.The array contains the states and capital 
+names separated by a '_'.Write a method which accepts the string array and 
+a state name and return the capital of the state.
+Note: the check must be case insensitive.
+
+Input1:{'TN_Chennai','Kerala_TVM','Karnataka_BNGLR'}
+Input2:Karnataka
+Output:BNGLR
+
+
+
+
+import java.util.*;
+class Ceight
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		String[] s=new String[4];
+		
+		for(int i=0;i<s.length;i++){
+			s[i]=sc.nextLine();}
+			String t=sc.nextLine();
+			String s1="";
+		for(int i=0;i<s.length-1;i++)
+		{
+			if(s[i].contains(t))
+			{
+				int n=s[i].indexOf("_");
+				s1=s[i].substring(n+1);
+			}
+		}
+				
+		System.out.println(s1);
+		
+	}
+}
+
+
+----------------------------------------------------------------------
+9. Given an arraylist of strings,write a method to return the string
+formed by the last character of each string.
+
+Input:
+['ab','a','abcd']
+
+Output:
+['car','java','mat']
+
+
+
+
+import java.util.*;
+
+
+public class Cten {
+
+	public static void main(String []args) {
+		ArrayList<String> string = new ArrayList<String>();{
+		
+		Scanner str = new Scanner(System.in);
+		Scanner num = new Scanner(System.in);
+
+		System.out.print("Enter the number of strings : ");
+		int n = num.nextInt();
+		
+		System.out.println("Enter the strings : ");
+		
+		for (int i =0 ;i<n;i++) {
+			
+			String data = str.nextLine();
+			string.add(data);
+			
+			
+		}
+		
+		System.out.println("Data Entered by you : "+string);
+		String c[] = new String[string.size()];
+		
+		for (int i=0;i<string.size();i++) {
+			c[i] = (String) string.get(i);
+			
+		}
+		
+		String word  = new String();
+		for (int i=0 ;i<c.length;i++ ) {
+			
+			
+			word += c[i].substring(c[i].length()-1);
+			
+		}
+		
+		System.out.print("The word formed is : "+word);
+		
+		}
+	}
+	
+	
+}
+
+
+
+
+--------------------------------------------------------------------
+10. Given a 'n' digit number.Write a program to find a number formed by the
+difference of consecutive digits. Last digit can be left as it is.
+
+Input: 21457
+Output: 13127
+
+Input2: 578461
+Output2: 214251
+
+
+
+
+import java.util.*;
+class Cnine
+{
+	public static void main(String args[])
+	{
+		int rem=0;
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		String s=n+"";
+		//String t="";
+		char[] ch=s.toCharArray();
+		int c1[]=new int[10];
+		for(int i=0;i<ch.length-1;i++)
+		{
+			c1[i]=Math.abs(ch[i]-ch[i+1]);
+			System.out.print(c1[i]+"");
+				
+		}
+		
+		System.out.print(ch[ch.length-1]);
+		
+	}
+}	
+
