@@ -1,0 +1,19 @@
+body{
+	background-color: lightblue;
+}
+h1{
+	color: red;
+	
+}
+label{
+	
+	
+	float: left;
+	display: inline-block;
+	
+	width: 200px;
+}
+form{
+	line-height: 30px;
+
+}

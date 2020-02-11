@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>loan application form</title>
+	<link rel="stylesheet" type="text/css" href="myStyle.css"/>
+	
+
+	<script>
+function computeLoan() {
+	var AMOUNT=document.getElementsById('AMOUNT').value;
+	var INTEREST_RATE=document.getElementById('INTEREST_RATE').value;
+	var MONTHS=document.getElementById('MONTHS').value;
+	var INTEREST=(AMOUNT*(INTEREST_RATE*.01))/MONTHS;
+	var payment=((AMOUNT/MONTHS)+INTEREST).toFixed(2);
+	payment=payment.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	document.getElementById('payment').innerHTML="Monthly payment =$"+payment;
+}
+</script>
+
+</head>
+<body>
+	<h1>DAC BANK-AVAIL LOAN</h1>
+	<form>
+		<label style="text-align: left;">CUSTOMER NAME</label>
+		<input type="text" name="customer name" value=" "><br>
+		<label style="text-align: left;">ADDRESS</label>
+		<input type="text" name="Address" value=" "><br>
+		<label style="text-align: left;">GENDER</label>
+		<input type="radio" name="radio">MALE</input>
+		<input type="radio" name="radio">FEMALE</input><br>
+		<label style="text-align: left;">EMAIL ID</label>
+		<input type="text" name="email id" value=" "><br>
+		<label style="text-align: left;";>MOBILE NO</label>
+		<input type="tel" name="mobile no" value=" "><br>
+		<label style="text-align: left;">DATE OF BIRTH</label>
+		<input type="text" name="date of birth" value=" "><br>
+		<label style="text-align: left;">LOAN TYPE</label>
+		<select>
+			<option value="loan">SELECT</option>
+			<option value="personal loan">PERSONAL LOAN</option>
+			<option value="education loan">EDUCATION LOAN</option>
+			<option value="home loan">HOME LOAN</option>
+			<option value="car loan">CAR LOAN</option>
+			<option value="gold loan">GOLD LOAN</option>
+			<option value="vehicle loan">VEHICLE</option>
+		</select><br>
+		<label style="text-align: left;">LOAN AMOUNT</label>
+		<select>
+			<option value="loan">SELECT</option>
+			<option value="personal loan">500000</option>
+			<option value="education loan">1100000</option>
+			<option value="home loan">5000000</option>
+			<option value="car loan">1000000</option>
+			<option value="gold loan">8000000</option>
+			<option value="vehicle loan">3000000</option>
+			
+		</select><br>
+			<label style="text-align: left;">TENURE</label>
+			<input type="text" name="tenure" value=" "><br>
+			<input type="submit" value="AVAIL LOAN">
+			<input type="submit" value="reset">
+
+		</select>
+		
+		
+		
+		
+		
+
+	</form>
+
+
+
+
+
+	<body>
+<p>LOAN AMOUNT: $<input id="AMOUNT" type="number" min="1" max="10000000" onchange="computeLoan()"></p>
+
+<p>INTEREST RATE: $<input id="INTEREST RATE" type="number" min="0" max="100" value="10" step=".1"onchange="computeLoan()">%</p>
+<p>MONTHS: $<input id="MONTHS" type="number" min="1" max="72" value="1" step="1" onchange="computeLoan()"></p>
+<h2 id="payment"></h2>
+</body>
+
+</body>
+</html>

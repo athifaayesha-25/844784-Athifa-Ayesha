@@ -1,0 +1,41 @@
+body{
+	background-color: lightblue;
+}
+h1{
+	color: red;
+	
+}
+label{
+	
+	
+	float: left;
+	display: inline-block;
+	
+	width: 200px;
+}
+form{
+	line-height: 30px;
+
+}
+
+
+
+
+
+<script>
+function computeLoan() {
+	var AMOUNT=document.getElementsById('AMOUNT').value;
+	var INTEREST_RATE=document.getElementById('INTEREST_RATE').value;
+	var MONTHS=document.getElementById('MONTHS').value;
+	var INTEREST=(AMOUNT*(INTEREST_RATE*.01))/MONTHS;
+	var payment=((AMOUNT/MONTHS)+INTEREST).toFixed(2);
+	payment=payment.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	document.getElementById('payment').innerHTML="Monthly payment =$"+payment;
+}
+</script>
+<body>
+<p>LOAN AMOUNT: $<input id="AMOUNT" type="number" min="1" max="10000000" onchange="computeLoan()"></p>
+<p>INTEREST RATE: $<input id="INTEREST RATE" type="number" min="0" max="100" value="10" step=".1"onchange="computeLoan()">%</p>
+<p>MONTHS: $<input id="MONTHS" type="number" min="1" max="72" value="1" step="1" onchange="computeLoan()"></p>
+<h2 id="payment"></h2>
+</body>
