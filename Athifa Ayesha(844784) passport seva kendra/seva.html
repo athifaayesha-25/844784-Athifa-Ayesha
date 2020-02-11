@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>passport seva system support</title>
+	<script type="text/javascript" src="pass.js" ></script>
+		
+
+
+
+	<style>
+		h1{
+			color: red;
+		}
+		body{
+			background-color: lightpink;
+		}
+
+		label{
+	float: left;
+	width: 250px;
+	clear: left;
+	
+}
+form{ 
+	line-height: 30px;
+	background-color: yellow;
+}
+	</style>
+
+	
+</head>
+<body>
+	<h1>PASSPORT SEVA SYSYTEM SUPPORT</h1>
+	
+	<form action="kendra.html" name="form" onsubmit="return validate()">
+		
+
+	<b><label style="text-align: left;">NAME:</label></b>
+		<input type="text" name="name" placeholder="User Name"><br><br>
+		 
+
+		<b><label style="text-align: left;">PASSWORD:</label></b>
+		<input type="password" id="pass" name="password" minlength="7" maxlength="8"><br><br>
+
+      <b><label>QUALIFICATIONS:</label></b>
+		<select>
+			<option value="select">SELECT</option>
+			<option value="btech">BTECH</option>
+			<option value="be">BE</option>
+			<option value="bsc">BSC</option>
+			<option value="bcom">BCOM</option>
+			<option value="bbm">BBM</option>
+		</select><br><br>
+
+		<b><label style="text-align: left;">EMAILID:</label></b>
+	<fieldset style="width: 200px;">
+	PRIMARY: <input type="email" name="email" id="txtEmail" required>
+	 SECONDARY: <input type="email" name="email"id="txtEmail1" required>
+	</fieldset><br><br>
+
+	 <b><label style="text-align: left;">CONTACT:</label></b>
+		<fieldset style="width: 200px;">
+		MOBILE: <input type="number" name="phone" id="phoneno" required>
+		LANDLINE: <input type="number" name="phone" id="phoneno" required>
+		</fieldset><br><br>
+
+		<b><label style="text-align: left;">DATE OF BIRTH:</label></b>
+  <input type="date" name="bday"><br><br>
+
+  <b><label style="text-align: left;">APPLY TYPE:</label></b>
+  <select>
+  	<option value="select">SELECT</option>
+  	<option value="passport">ORDINARY PASSPORT</option>
+  	<option value="passport">PASSPORT CARD</option>
+  	<option value="passport">OFFICIAL PASSPORT</option>
+  	<option value="passport">DIPLOMATIC PASSPORT</option>
+  	<option value="passport">EMERGENCY PASSPORT</option>
+  </select><br><br>
+
+  <b><label style="text-align: left;">GENDER:</label></b>
+  <input type="radio" value="radio">MALE</input>
+  <input type="radio" value="radio">FEMALE</input><br><br>
+
+  <b><label style="text-align: left;">HINT QUESTION:</label></b>
+  <input type="text" name="question" value=" "><br><br>
+
+   <input type="image" src="register.jpg" value="submit" alt="REGISTER" width="100" height="48" onclick="validate()">
+
+
+
+   
+    <button type="reset">
+    <img src="reset.jpg" alt="reset" width="100" height="48" />
+ </button>
+
+
+
+
+
+
+	</form>
+
+
+
+
+
+	
+
+
+
+</body>
+</html>
