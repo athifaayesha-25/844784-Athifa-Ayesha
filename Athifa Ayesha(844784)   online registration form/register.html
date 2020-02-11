@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>online registration</title>
+	<script type="text/javascript" src="login.js"></script>
+
+
+	<style>
+		h1{
+			color: red;
+		}
+		body{
+			 
+			background-color: yellow;
+			
+		}
+
+		label{
+	float: left;
+	width: 250px;
+	
+}
+form{
+	line-height: 30px;
+}
+
+	</style>
+</head>
+<body>
+	
+	<h1>ONLINE REGISTRATION FORM</h1>
+	<form action="online.html" name="form" onsubmit="return validate()" >
+		<label style="text-align: left;">NAME:</label>
+		<input type="text" name="name" placeholder="User Name"><br><br>
+
+		<label style="text-align: left;">PASSWORD:</label>
+		<input type="password" id="pass" name="password" minlength="7" maxlength="8"><br><br>
+
+
+		<label>ADDRESS:(upto 250 characters)</label>
+		<textarea rows="4" cols="50" maxlength="250" required></textarea><br><br>
+
+		<label style="text-align: left;">COUNTRY:</label>
+		<select>
+			<option value="select">SELECT</option>
+			<option value="India">INDIA</option>
+			<option value="pakistan">Pakistan</option>
+			<option value="france">france</option>
+			<option value="bangladesh">BANGLADESH</option>
+			<option value="australia">AUSTRALIA</option>
+			<option value="nepal">NEPAL</option>
+			<option value="japan">JAPAN</option>
+			<option value="china">CHINA</option>
+			<option value="soudi arabia">SOUDI ARABIA</option>
+			<option value="USA">USA</option>
+		</select><br><br>
+
+		<label style="text-align: left;">GENDER:</label>
+		<input type="radio" name="radio">MALE</input>
+		<input type="radio" name="radio">FEMALE</input><br><br>
+
+		<label style="text-align: left;">LANGUAGES KNOWN:</label>
+		<input type="checkbox" name="languages known" value="english"><span>ENGLISH</span>
+  <input type="checkbox" name="languages known" value="kannada" > <span>KANNADA</span>
+  <input type="checkbox" name="languages known" value="hindi"><span>HINDI</span>
+  <input type="checkbox" name="languages known" value="urdu" ><span>URDU</span>
+  <input type="checkbox" name="languages known" value="malayalam"><span>MALAYALAM</span>
+  <input type="checkbox" name="languages known" value="tamil" ><span>TAMIL</span>
+  <input type="checkbox" name="languages known" value="bengali"><span>BENGALI</span>
+  <input type="checkbox" name="languages known" value="gujarati" ><span>GUJARATi</span><br><br>
+
+ <input type="image" src="submit.png" value="submit" alt="submit" width="100" height="48" onclick="validate()">
+
+
+
+
+
+
+		
+    
+	</form>
+
+
+</body>
+</html>
