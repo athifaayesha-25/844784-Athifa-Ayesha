@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ServletExample
+ * Servlet implementation class HelloWorld
  */
-public class ServletExample extends HttpServlet {
+public class HelloWorld extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletExample() {
+    public HelloWorld() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,11 +27,10 @@ public class ServletExample extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		/*String fname=request.getParameter("fname");
-		String lname=request.getParameter("lname");
-		PrintWriter out=response.getWriter();
-		out.print(fname+""+lname);*/
+		response.setContentType("text/html");
+		PrintWriter pw=response.getWriter();
+		pw.print("hello");
+		
 	}
 
 	/**
@@ -39,10 +38,7 @@ public class ServletExample extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String fname=request.getParameter("fname");
-		String lname=request.getParameter("lname");
-		PrintWriter out=response.getWriter();
-		out.print(fname+""+lname);
+		doGet(request, response);
 	}
 
 }
