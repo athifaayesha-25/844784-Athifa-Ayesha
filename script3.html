@@ -1,0 +1,25 @@
+<script language="javascript">
+function id11()
+{
+x=document.getElementById("u1").value;
+x+="Qualification: ";
+if(document.getElementById("c1").checked==true)
+{
+x+=" "+document.getElementById("c1").value;
+}
+if(document.getElementById("c2").checked)
+{
+x+=" "+document.getElementById("c2").value;
+}
+alert(x);
+}
+</script>
+<form name="form1" action="http://www.oracle.com" method=get onsubmit="id11()">
+Username:<input type=text id="u1"><p>
+Qualification:
+<input type=checkbox id="c1" value="M.C.A">M.C.A
+<input type=checkbox id="c2" value="M.B.A">M.B.A
+<p>
+<input type=submit value=Login>
+</form>
+

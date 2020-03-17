@@ -1,0 +1,62 @@
+
+<script>
+//validation
+function verify1()
+{
+if(document.form1.u1.value==" ")
+{
+alert("please enter username");
+document.form1.u1.focus();
+return false;
+}
+if(document.form1.p1.value==" ")
+{
+alert("please enter password");
+document.form1.p1.focus();
+return false;
+}
+if(document.form1.p1.value.length<6)
+{
+alert("min password length is 6");
+document.form1.p1.focus();
+return false;
+}
+var checked=false;
+for(i=0;i<document.form1.c1.length;i++)
+{
+if(document.form1.c1[i].checked)
+{
+checked=true;
+}
+}
+if(!checked)
+{
+alert('please select your qualification');
+return false;
+}
+var x="Name:"+document.form1.u1.value;
+x+="Password:"+document.form1.p1.value;
+x+="Qualification:";
+for(i=0;i<document.form1.c1.length;i++)
+{
+if(document.form1.c1[i].checked==true)
+{
+x+=" "+document.form1.c1[i].value;
+}
+}
+alert(x);
+}
+</script>
+
+<body>
+<form name="form1" method=get action=""onsubmit="return verify1()">
+Username:<input type=text name="u1"><p>
+Password:<input type=password name="p1"><p>
+Qualification:
+<input type=checkbox name="c1" value="M.C.A">M.C.A
+<input type=checkbox name="c1" value="M.B.A">M.B.A
+<input type=checkbox name="c1" value="M.sc">M.sc
+<input type=checkbox name="c1" value="M.E">M.E
+<input type="submit" value="Sign In">
+</form>
+</body>

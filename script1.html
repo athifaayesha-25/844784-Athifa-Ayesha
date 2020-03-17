@@ -1,0 +1,55 @@
+<script language="javascript">
+//Printing
+document.write("Hello");
+/*
+Author:Karpagam
+MONTH:AUG
+*/
+document.write("<font color=red><b>hello</b></font>");
+salary=32000;
+var name="devi";
+document.write("<p>"+salary+ " "+name);
+var time = new Date();//Date Object
+var time1 = time.getHours();
+document.write("<p>Time: "+time);
+document.write("<p>Hour: "+time1);
+if (time1 < 10)
+{
+ document.write("<p>Good morning");
+}
+else
+{
+ document.write("<p>Good Noon");
+}
+i=0;
+while (i<=5)
+{
+document.write("<p>"+i);
+i++;
+}
+i = 22;
+do
+{
+document.write("<p>"+i);
+i++;
+}
+while (i <= 25)
+alert("hello");
+window.alert("bye");//window object!!!
+//Arrays are objects in javascript
+var mycars = new Array();
+mycars[0] = "Audi";
+mycars[1] = "Volvo";
+mycars[2] = "BMW";
+var lang = new Array(2);
+lang[0] = "Java";
+lang[1] = "J2EE";
+for (i=0;i<mycars.length;i++)
+{
+document.writeln(mycars[i]);
+}
+for(x in lang)
+{
+document.writeln(lang[x]);
+}
+</script>

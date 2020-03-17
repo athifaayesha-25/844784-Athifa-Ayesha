@@ -1,0 +1,506 @@
+package com.test;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class ConfigInit1
+ */
+@WebServlet(
+		urlPatterns = { "/ConfigInit1" }, 
+		initParams = { 
+				@WebInitParam(name = "Company", value = "CTS"), 
+				@WebInitParam(name = "Venue", value = "Chennai")
+		})
+public class ConfigInit1 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ConfigInit1() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+    String v1,t1;
+	public void init(ServletConfig config) 
+			throws ServletException
+	{
+		//context==>config
+		super.init(config);//init()
+		v1=config.getInitParameter("Company");
+		 t1=config.getInitParameter("Venue");
+		
+	}
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		  ServletConfig con1 = getServletConfig();
+	        out.println("Company:" + con1.
+	        		getInitParameter("Company"));
+	        out.println("Venue:" +con1.
+	        		getInitParameter("Venue"));
+	        out.println("<h1>Venue: "+t1);
+			    out.println("<h1>Company: "+v1);
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+
+==============================================
+package com.test;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class InitParaWebxml
+ */
+@WebServlet("/InitParaWebxml1")
+public class InitParaWebxml extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public InitParaWebxml() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		  PrintWriter out = response.getWriter();
+		  ServletConfig con1 = getServletConfig();
+		  out.println("Ename:" + 
+		  con1.getInitParameter("EmpName"));
+	        out.println("Edept:" +
+		  con1.getInitParameter("EmpDept"));
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+============================================================================
+web.xml
+
+  <servlet>
+    <servlet-name>InitParaWebxml</servlet-name>
+    <servlet-class>com.test.InitParaWebxml</servlet-class>
+    <init-param>
+      <param-name>EmpName</param-name>
+      <param-value>Thananya</param-value>
+    </init-param>
+    <init-param>
+      <param-name>EmpDept</param-name>
+      <param-value>Finance</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitParaWebxml</servlet-name>
+    <url-pattern>/InitParaWebxml</url-pattern>
+  </servlet-mapping>
+===================================================================
+package com.test;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class ContextParam1
+ */
+@WebServlet("/ContextParam1")
+public class ContextParam1 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ContextParam1() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+    String c1,t1;
+	public void init() throws ServletException 
+	{
+	t1=getServletContext().getInitParameter("Tip1");
+	c1=getServletContext().getInitParameter("Tip2");
+		}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out=response.getWriter();
+		ServletContext obj=getServletContext();
+		out.println("<h1>Hint1: "
+		+obj.getInitParameter("Tip1"));
+
+		out.println("<h1>Hint2: "
+		+obj.getInitParameter("Tip2"));
+		out.println("<h1>Context Init: "+t1+ " "+c1);
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+==========================================================
+
+  <context-param>
+    <param-name>Tip1</param-name>
+    <param-value>Stop Talking</param-value>
+  </context-param>
+  <context-param>
+    <param-name>Tip2</param-name>
+    <param-value>Listen the class</param-value>
+  </context-param>
+=================================================================
+<HTML>
+<BODY>
+<FORM ACTION="Hidden1" METHOD="get">
+<INPUT TYPE="hidden" NAME="com_name" 
+VALUE="CTS">
+<INPUT TYPE="hidden" NAME="location" 
+VALUE="Chennai">
+<INPUT TYPE="submit" value="Click">
+</FORM>
+</BODY>
+</HTML>
+==============================================================
+package com.test;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class Hidden1
+ */
+@WebServlet("/Hidden1")
+public class Hidden1 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Hidden1() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out=response.getWriter();
+
+		out.println("<h1>First Hidden: "+request.
+				   getParameter("com_name"));
+		   out.println("Second Hidden: "+request.
+				   getParameter("location"));
+//doget calls dopost
+		   out.println("<form method=post "
+		   		+ "action=Hidden1>");
+		   out.println("<input type=hidden"
+		   		+ " name=training value=Java>");
+		   out.println("<input type=hidden "
+		   		+ "name=Qualification value=B.E>");
+		   out.println("<input type=submit value=View>");
+
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out=response.getWriter();
+		
+	    out.println("<h1>Third Hidden: "+request.
+	    		getParameter("training"));
+out.println("Fourth Hidden: "+request.
+		getParameter("Qualification"));
+}
+
+}
+========================================================================
+package com.test;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class RequestDispatcher1
+ */
+@WebServlet("/RequestDispatcher1")
+public class RequestDispatcher1 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public RequestDispatcher1() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter pw=response.getWriter();
+		ServletContext sc = getServletContext();
+		RequestDispatcher dis = sc.
+		getRequestDispatcher("/Jdbc1");//relative path only allowed
+		if (dis != null)
+		{
+		     //dis.include(request, response);
+		     dis.forward(request,response);
+		}
+pw.println("<h1>Current Servlet");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+===============================================================================
+package com.test;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class RequestDispatcher2
+ */
+@WebServlet("/RequestDispatcher2")
+public class RequestDispatcher2 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public RequestDispatcher2() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter pw=response.getWriter();
+	//absolute and relative both allowed 
+		RequestDispatcher dis = request.
+				getRequestDispatcher("/Jdbc1");//relative path only allowed
+				if (dis != null)
+				{
+				     //dis.include(request, response);
+				     dis.forward(request,response);
+				}
+
+pw.println("<h1>Current Servlet");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+========================================================================
+<form action="Dispatcher" method="post">
+
+Eno:<input type="text" name="e1"><br>
+Name:<input type="text" name="n1"><br>
+Salary:<input type="text" name="s1"><br>
+Dept:<input type="text" name="d1"><br>
+<input type="submit" value="SignIn">
+<input type="reset" value="Clear">
+</form>
+========================================================================
+package com.test;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class Dispatcher
+ */
+@WebServlet("/Dispatcher")
+public class Dispatcher extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Dispatcher() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String eno1= request.getParameter("e1");
+		String name1= request.getParameter("n1");
+		String salary1= request.getParameter("s1");
+		String dept1= request.getParameter("d1");
+
+		//setattribute(attributename,attributevalue)
+		request.setAttribute("Employeenumber", eno1);//attributename,attributevalue
+		request.setAttribute("Empname", name1);
+		request.setAttribute("Salary", salary1);
+		request.setAttribute("Depart", dept1);
+
+		ServletContext context= getServletContext();
+		RequestDispatcher rd= context.
+				getRequestDispatcher("/Dispatcher4");
+		rd.forward(request, response);
+
+
+
+	}
+
+}
+====================================================================
+package com.test;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class Dispatcher4
+ */
+@WebServlet("/Dispatcher4")
+public class Dispatcher4 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Dispatcher4() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out= response.getWriter();
+		out.println("Dispatcher 4 Servlet");
+String a=(String)request.getAttribute("Employeenumber");
+String b=(String)request.getAttribute("Empname");
+String c=(String)request.getAttribute("Salary");
+String d=(String)request.getAttribute("Depart");
+out.println("<h1>EmpDetails: "+a + " "+b + " "+c+ " "+d);
+}
+
+}

@@ -1,0 +1,42 @@
+-----------------------PROBLEM STATEMENTS ON JAVA STRINGS---------------------
+----------------------***********************************---------------------
+
+
+1. Write a program which creates a String “Welcome to Java World” and perform 
+the following 
+
+i.	Returns the character at 5th position and display it.
+
+
+ii.	Compare the above String with “Welcome” lexicographically ignoring
+ case differences and display the result.
+iii. Concatenates “- Let us learn” to the above string and display it.
+iv.  Returns the position of the first occurrence of character ‘a’ and
+ display it.
+v.  Replaces all the occurrences of ‘a’ character with the new ‘e’ and display it.
+vi. Returns string between 4th position and 10th position and display it.
+vii. Returns the lowercase of the string and display it
+----------------------------------------------------------------------------
+
+2.Write a program which creates a StringBuffer “This is StringBuffer” and
+ performs the following. 
+
+1.	Adds the string ”- This is a sample program” to existing string and 
+	display it.
+2.	Inserts the string “Object” into the existing string at 21st postion
+	 and display it.
+3.	Reverses the entire string and displays it.
+4.	Replaces the word “Buffer” with “Builder” and display it.
+
+---------------------------------------------------------------------------
+3.Write a program which creates a String “C:\IBM\DB2\PROGRAM\DB2COPY1.EXE”. 
+It parses the string with the delimiter as ‘\’ and displays the String in the
+ following format.
+Drive: c:\
+Folders: IBM || DB2 || PROGRAM 
+File: DB2COPY1.EXE
+
+Hint:  Use String Builder for concatenating the folder names with |.
+
+---------------------------------------------------------------------------
+
