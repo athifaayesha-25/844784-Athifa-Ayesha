@@ -1,0 +1,998 @@
+-----------------------PROBLEM STATEMENTS ON JAVA STRINGS---------------------
+----------------------***********************************---------------------
+1. Write a program which creates a String “Welcome to Java World” and perform 
+the following 
+
+i.	Returns the character at 5th position and display it.
+ii.	Compare the above String with “Welcome” lexicographically ignoring
+ case differences and display the result.
+iii. Concatenates “- Let us learn” to the above string and display it.
+iv.  Returns the position of the first occurrence of character ‘a’ and
+ display it.
+v.  Replaces all the occurrences of ‘a’ character with the new ‘e’ and display it.
+vi. Returns string between 4th position and 10th position and display it.
+vii. Returns the lowercase of the string and display it
+----------------------------------------------------------------------------
+
+2.Write a program which creates a StringBuffer “This is StringBuffer” and
+ performs the following. 
+
+1.	Adds the string ”- This is a sample program” to existing string and 
+	display it.
+2.	Inserts the string “Object” into the existing string at 21st postion
+	 and display it.
+3.	Reverses the entire string and displays it.
+4.	Replaces the word “Buffer” with “Builder” and display it.
+
+---------------------------------------------------------------------------
+3.Write a program which creates a String “C:\IBM\DB2\PROGRAM\DB2COPY1.EXE”. 
+It parses the string with the delimiter as ‘\’ and displays the String in the
+ following format.
+Drive: c:\
+Folders: IBM || DB2 || PROGRAM 
+File: DB2COPY1.EXE
+
+Hint:  Use String Builder for concatenating the folder names with |.
+
+---------------------------------------------------------------------------
+4. Two input strings are accepted. If the two strings are of same length 
+concat them and return, if they are not of same length, reduce the longer
+ string to size of smaller one, and concat them
+
+input1:"hello"
+input2:"hi" 
+output:"lohi"
+input1:"aaa"
+input2:"bbb"
+output:"aaabbb"
+
+
+
+
+import java.util.*;
+public class Sfour{
+      public static String concatStrings(String s1,String s2){
+            StringBuffer sb = new StringBuffer();
+            if(s1.length() == s2.length())
+                  sb.append(s1).append(s2);
+            else if(s1.length() > s2.length()){
+                  s1 = s1.substring(s1.length()/2, s1.length());
+                  sb.append(s1).append(s2);
+            }
+            else if(s1.length() < s2.length()){
+                  s2 = s2.substring(s2.length()/2, s2.length());
+                  sb.append(s1).append(s2);
+            }
+            return sb.toString();
+      }
+      public static void main(String[] args) {
+            Scanner s = new Scanner(System.in);
+            String s1 = s.next();
+            String s2 = s.next();
+            System.out.println(concatStrings(s1,s2));
+      }
+}
+
+-------------------------------------------------------------------
+5. accept a string and find if it is of date format "dd/mm/yyyy".
+input:01/13/2012
+output:false
+
+
+import java.util.StringTokenizer;
+public class Sfive {
+      public static boolean formattingDate(String s){
+            boolean b1 = false;
+            StringTokenizer t = new StringTokenizer(s,"/");
+            int n1 = Integer.parseInt(t.nextToken());
+            int n2 = Integer.parseInt(t.nextToken());
+            String s2 = t.nextToken();
+            int n3 = Integer.parseInt(s2);
+            int n4 = s2.length();
+            if(n4 == 4) {
+                  if(n3%4 == 0) {
+                        if((n2 == 2)&&(n1 <= 29))
+                              b1 = true;
+                        else if((n2 == 4)||(n2 == 6)||(n2 == 9)||(n2 == 11)&&(n1 <= 30))
+                              b1=true;
+                        else if((n2 == 1)||(n2 == 3)||(n2 == 5)||(n2 == 7)||(n2 == 8)||(n2 == 10)||(n2 == 12)&&(n1 <= 31))
+                              b1=true;
+                  } else {
+                        if((n2 == 2)&&(n1 <= 28))
+                              b1 = true;
+                        else if((n2 == 4)||(n2 == 6)||(n2 == 9)||(n2 == 11)&&(n1 <= 30))
+                              b1 = true;
+                        else if((n2 == 1)||(n2 == 3)||(n2 == 5)||(n2 == 7)||(n2 == 8)||(n2 == 10)||(n2 == 12)&&(n1 <= 31))
+                              b1 = true;
+                  }
+            }
+            return b1;
+      }
+      public static void main(String[] args) {
+            String s = "31/13/2012";
+            boolean b = formattingDate(s);
+            if(b == true)
+                  System.out.println("Date is in dd/MM/yyyy format (True)");
+            else
+                  System.out.println("Date is not in dd/MM/yyyy format (False)");
+            }
+}
+
+
+------------------------------------------------------------------
+6. Find if a given pattern appears in both the input strings at same postions.
+input1: "hh--ww--"
+input2: "rt--er--"
+output: true(false otherwise)
+
+
+
+public class Ssix{
+      public static boolean stringPattern(String s1,String s2){
+            String st1 = s1.length() < s2.length()?s1:s2;
+            String st2 = s1.length() > s2.length()?s1:s2;
+            boolean b = true;
+            String s = st2.substring(st1.length());
+            if(s.contains("-"))
+                  b = false;
+            else {
+                  loop:
+                        for(int i = 0;i < st1.length();i++)
+                              if((st1.charAt(i) == '-') || (st2.charAt(i) == '-'))
+                                    if(st1.charAt(i) != st2.charAt(i)) {
+                                          b = false;
+                                          break loop;
+                                    }
+            }
+            return b;
+      }
+      public static void main(String[] args) {
+            String s1 = "he--ll--";
+            String s2 = "we--ll--";
+            boolean b = stringPattern(s1,s2);
+            if(b == true)
+                  System.out.println("same pattern");
+            else
+            System.out.println("different pattern");
+      }
+}
+
+
+--------------------------------------------------------------------
+7. Check whether a given string is palindrome also check whether it has
+ atleast 2 different vowels
+input: "madam"
+output: false(no 2 diff vowels)
+input: "reviver"
+output: true(diff vowels)
+input: "racecar"
+output: true(diff vowels)
+
+
+
+
+public class Sseven {
+      public static boolean palindromeAndVowelCheck(String s){
+            boolean b = true;
+            int c = 0;
+            String s1 = "aeiou";
+            StringBuffer sb = new StringBuffer(s);
+            String s2 = sb.reverse().toString();
+            if(!s2.equals(s))
+                  b=false;
+            else{
+                  loop:
+                        for(int i = 0;i < s1.length();i++)
+                              for(int j = 0;j < s.length();j++)
+                                    if(s1.charAt(i) == s.charAt(j)){
+                                          c++;
+                                    continue loop;
+                                    }
+                        if(c<2)
+                              b = false;
+                        }
+            return b;
+      }
+      public static void main(String[] args) {
+            String s = "deed";
+            System.out.println(palindromeAndVowelCheck(s));
+      }
+}
+
+----------------------------------------------------------------------
+8. Find no of characters in a given string which are not repeated.
+input: "hello"
+output: 3
+
+
+
+public class Seight {
+      public static int noOfnonRepeatedCharacters(String s1){
+            StringBuffer sb = new StringBuffer(s1);
+            for(int i=0;i < sb.length();i++){
+                  int n=0;
+                  for(int j = i+1;j < sb.length();j++)
+                        if(sb.charAt(i) == sb.charAt(j)){
+                              sb.deleteCharAt(j);
+                        n++;
+                  }
+                  if(n > 0){
+                        sb.deleteCharAt(i);
+                        i--;
+                  }
+            }
+            return sb.length();
+      }
+      public static void main(String[] args) {
+            String s1 = "kavya";
+            System.out.println(noOfnonRepeatedCharacters(s1));
+      }
+}
+
+------------------------------------------------------------------------
+9. Get a input string. Find if it is a negative number, if true return the
+ absolute value, in other cases return -1.
+input: "-123"
+output: 123
+input: "@123"
+output: -1
+
+
+
+
+import java.util.*;
+public class Snine {
+      public static int negativeString(String s1){
+            int n1 = 0;
+            if(s1.startsWith("-")){
+                  int n=Integer.parseInt(s1);
+                  if(n<0)
+                        n1 = Math.abs(n);}
+                  else
+                        n1 = -1;
+            return n1;
+      }
+      public static void main(String[] args) {
+            Scanner s = new Scanner(System.in);
+            String s1 = s.next();
+            System.out.println(negativeString(s1));
+      }
+}
+------------------------------------------------------------------------
+10. 
+Write a Program that accepts a string and removes the duplicate characters.
+
+
+
+public class Sten {
+      public static String removalOfDuplicateCharacters(String s1){
+            StringBuffer sb = new StringBuffer(s1);
+            for(int i = 0;i < s1.length();i++)
+                  for(int j = i+1;j < s1.length();j++)
+                        if(s1.charAt(i) == s1.charAt(j))
+                              sb.deleteCharAt(j);
+            return sb.toString();
+      }
+      public static void main(String[] args) {
+            String s1 = "kavya";
+            System.out.println(removalOfDuplicateCharacters(s1));
+      }
+}
+
+
+---------------------------------------------------------------------
+
+11.write a program to validate the ip address in the form a.b.c.d
+   where a,b,c,d must be between 0and 255
+   if validated return 1 else return 2
+
+
+
+
+import java.util.*;
+public class Seleven {
+      public static void main(String[] args) {
+            String ipAddress = "010.230.110.160";
+            boolean b=validateIpAddress(ipAddress);
+            if(b == true)
+                  System.out.println("valid ipAddress");
+            else
+                  System.out.println("not a valid ipAddress");
+      }
+      public static boolean validateIpAddress(String ipAddress) {
+            boolean b1 = false;
+            StringTokenizer t = new StringTokenizer(ipAddress,".");
+            int a = Integer.parseInt(t.nextToken());
+            int b = Integer.parseInt(t.nextToken());
+            int c = Integer.parseInt(t.nextToken());
+            int d = Integer.parseInt(t.nextToken());
+            if((a >= 0 && a <= 255)&&(b >= 0 && b <= 255)&&(c >= 0 && c <= 255)&&(d >= 0 && d <= 255))
+                  b1=true;
+            return b1;
+      }
+}
+--------------------------------------------------------------
+12. 
+String encrption. replace the odd-index character with next character
+(if it is 'z' replace with 'a'..if 'a' with 'b' as such), 
+leave the even index as such. return the encrypted string.
+
+
+
+public class Stwelve{
+      public static void main(String[] args) {
+            String s = "kavya";
+            System.out.println(oddEncryptionOfString(s));
+      }
+      public static String oddEncryptionOfString(String s) {
+            StringBuffer sb = new StringBuffer();
+            for(int i = 0;i < s.length();i++){
+                  char c = s.charAt(i);
+                  if(c%2 != 0){
+                        c = (char)(c+1);
+                        sb.append(c);
+                  }
+                  else
+                        sb.append(c);
+            }
+      return sb.toString();
+      }
+}
+
+------------------------------------------------------------------
+13. write a program : 
+GIVEN A STRING 555-666-1234
+DISPLAY AS 55-56-661-234
+
+
+
+
+import java.util.StringTokenizer;
+public class Sthirteen{
+      public static void main(String[] args) {
+            String s = "555-666-1234";
+            System.out.println(display(s));
+      }
+      public static String display(String s) {
+            StringTokenizer t = new StringTokenizer(s,"-");
+            String s1 = t.nextToken();
+            String s2 = t.nextToken();
+            String s3 = t.nextToken();
+            StringBuffer sb = new StringBuffer();
+            sb.append(s1.substring(0, s1.length()-1)).append('-');
+            sb.append(s1.charAt(s1.length()-1)).append(s2.charAt(0)).append('-');
+            sb.append(s2.substring(1, s2.length())).append(s3.charAt(0)).append('-');
+            sb.append(s3.substring(1, s3.length()));
+            return sb.toString();
+      }
+}
+---------------------------------------------------------------
+14. write a program:
+input1=commitment;
+  output=cmmitmnt;
+c be the first index position 
+remove even vowels from the string
+
+
+
+public class Sfourteen {
+      public static void main(String[] args) {
+            String s1 = "cOmmitment";
+            System.out.println(removeEvenElements(s1));
+      }
+      public static String removeEvenElements(String s1) {
+            StringBuffer sb1 = new StringBuffer();
+            for(int i = 0;i < s1.length();i++)
+                  if((i%2) == 0)
+                        sb1.append(s1.charAt(i));
+                  else if((i%2) != 0)
+                        if(s1.charAt(i) != 'a' && s1.charAt(i) != 'e' && s1.charAt(i) != 'i' && s1.charAt(i) != 'o' && s1.charAt(i) != 'u')
+                              if(s1.charAt(i) != 'A' && s1.charAt(i) != 'E' && s1.charAt(i) != 'I' && s1.charAt(i) != 'O' && s1.charAt(i) != 'U')
+                                    sb1.append(s1.charAt(i));
+            return sb1.toString();
+      }
+}
+
+--------------------------------------------------------------
+15. compare two strings, if the characters in string 1 are present in
+   string 2, then it should be put as such in output, else '+' should be
+   put in output...ignore case difference.
+
+	input 1:"New York"
+	input 2:"NWYR"
+
+	output:N+w+Y+r+
+
+
+
+
+public class Sfifteen {
+      public static void main(String[] args) {
+            String s1 = "KAVYA";
+            String s2 = "KVA";
+            System.out.println(StringFormatting(s1,s2));
+      }
+      public static String StringFormatting(String s1, String s2) {
+            StringBuffer s4 = new StringBuffer();
+            String s3 = s1.toUpperCase();
+            for(int i = 0;i < s2.length();i++)
+                  for(int j = 0;j < s3.length();j++)
+                        if(s2.charAt(i) == s3.charAt(j))
+                              s4.append(s1.charAt(j)).append('+');
+            return s4.toString();
+      }
+}
+
+----------------------------------------------------------------
+16. input:
+	Searchstring s1="GeniusRajkumarDev";
+	String s2="Raj";
+	String s3="Dev";
+   output:
+        Return 1 if s2 comes before s3 in searchstring else return 2
+
+
+
+
+
+public class Ssixteen {
+      public static void main(String[] args) {
+            String srch = "kavyareddy";
+            String s1 = "kav";
+            String s2 = "kavya";
+            int n = searchString(srch,s1,s2);
+            if(n == 1)
+                  System.out.println(s1 + " comes before "+s2);
+            else
+                  System.out.println(s2 + " comes before "+s1);
+      }
+      public static int searchString(String srch, String s1, String s2) {
+            int n = 0;
+            int n1 = srch.indexOf(s1);
+            int n2 = srch.indexOf(s2);
+            if(n1 < n2)
+                  n = 1;
+            else
+                  n = 2;
+            return n;
+      }
+}
+
+
+
+
+
+---------------------------------------------------------------------
+17. input1="abc2012345"
+	input2="abc2112660"
+	input 3=4
+here "abc**" refers to customer id.
+12345 refers to last month eb reading and 12660 refers to this month eb 
+reading
+find the difference between two readings and multiply it by input3
+
+ie., output=(12660-12345)*4
+
+
+
+
+
+public class Sseventeen {
+      public static void main(String[] args) {
+            String input1 = "abc2012345";
+            String input2 = "abc2112660";
+            int input3 = 4;
+            System.out.println(meterReading(input1,input2,input3));
+      }
+      public static int meterReading(String input1, String input2, int input3) {
+            int n1 = Integer.parseInt(input1.substring(5, input1.length()));
+            int n2 = Integer.parseInt(input2.substring(5, input2.length()));
+            int n = Math.abs((n2-n1)*input3);
+            return n;
+      }
+}
+---------------------------------------------------------------------
+18. ount the number of times the second word in second string occurs in
+ first string-case sensitive
+
+input1=hai hello hai where hai Hai;
+input2=what hai
+output=3;
+
+
+
+
+import java.util.StringTokenizer;
+public class Seighteen {
+      public static void main(String[] args) {
+            String input1 = "hai hello how are you?? hai hai";
+            String input2 = "what hai";
+            System.out.println(stringOccurance(input1,input2));
+      }
+      public static int stringOccurance(String input1, String input2){
+            int count = 0;
+            StringTokenizer t1 = new StringTokenizer(input2," ");
+            String s1 = t1.nextToken();
+            String s2 = t1.nextToken();
+            StringTokenizer t2 = new StringTokenizer(input1," ");
+            while(t2.hasMoreTokens()){
+                  if(t2.nextToken().equals(s2))
+                  count++;
+            }
+            return count;
+      }
+}
+------------------------------------------------------------------------
+19. Find the sum of the numbers in the given input string array
+   Input{“2AA”,”12”,”ABC”,”c1a”)
+   Output:6 (2+1+2+1)
+   Note in the above array 12 must not considered as such
+   i.e,it must be considered as 1,2
+
+
+
+
+public class Snineteen{
+      public static void main(String[] args) {
+            String[] s1={"2AA","12","A2C","C5a"};
+            getSum(s1);
+      }
+      public static void getSum(String[] s1) {
+            int sum = 0;
+            for(int i = 0;i < s1.length;i++)
+                  for(int j = 0;j < s1[i].length();j++){
+                        char c = s1[i].charAt(j);
+                        if(Character.isDigit(c)){
+                              String t = String.valueOf(c);
+                              int n = Integer.parseInt(t);
+                              sum = sum + n;
+                        }
+                  }
+            System.out.println(sum);
+      }
+}
+---------------------------------------------------------------------
+20. Email Validation
+   String input1="test@gmail.com"
+                1)@ & . should be present;
+                2)@ & . should not be repeated;
+                3)there should be five charcters between @ and .;
+                4)there should be atleast 3 characters before @ ;
+                5)the end of mail id should be .com;
+
+
+
+
+
+import java.util.*;
+public class Stwenty {
+      public static void main(String[] args) {
+            String ip="kavyabayatham@gmail.com";
+            boolean b=emailIdValidation(ip);
+            if(b == true)
+                  System.out.println("valid mail Id");
+            else
+                  System.out.println("not a valid Id");
+      }
+      public static boolean emailIdValidation(String ip) {
+            int i=0;
+            boolean b=false;
+            StringTokenizer t=new StringTokenizer(ip,"@");
+            String s1=t.nextToken();
+            String s2=t.nextToken();
+            StringTokenizer t1=new StringTokenizer(s2,".");
+            String s3=t1.nextToken();
+            String s4=t1.nextToken();
+            if(ip.contains("@") && ip.contains("."))
+                  i++;
+            if(i==1)
+                  if(s3.length()==5)
+                        if(s1.length()>=3)
+                              if(s4.equals("com"))
+                                    b=true;
+            return b;
+      }
+}
+
+----------------------------------------------------------------------
+21. INPUT1= helloworld
+   INPUT2= 2. delete the char,if rpted twice.
+   if occurs more than twice,leave the first occurence and delete the 
+duplicate
+   O/P= helwrd;
+
+
+
+
+public class Stwentyone {
+      public static void main(String[] args) {
+            String input1 = "HelloWorld";
+            int input2 = 2;
+            System.out.println(deletingtheCharOccuringTwice(input1,input2));
+      }
+      public static String deletingtheCharOccuringTwice(String input1, int input2) {
+            StringBuffer sb = new StringBuffer(input1);
+            int c = 1;
+            for(int i = 0;i < sb.length();i++){
+                  c = 1;
+                  for(int j = i+1;j < sb.length();j++)
+                        if(sb.charAt(i) == sb.charAt(j))
+                              c++;
+                        if(c >= input2){
+                              for(int j = i+1;j < sb.length();j++)
+                                    if(sb.charAt(i) == sb.charAt(j))
+                                          sb.deleteCharAt(j);
+                              sb.deleteCharAt(i);
+                              i--;
+                        }
+            }
+            return sb.toString();
+      }
+}
+----------------------------------------------------------------------
+22. Write a program to rearrange-
+Input1=”Hello World”;  output- “dello WorlH”.
+
+import java.util.HashSet; 
+import java.util.regex.Matcher; 
+import java.util.regex.Pattern; 
+  
+public class Stwentytwo 
+{ 
+    static int countOccurrence(String[] word, String str)  
+    { 
+        // counter 
+        int counter = 0; 
+          
+        // for extracting words 
+        Pattern p = Pattern.compile("[a-zA-Z]+"); 
+        Matcher m = p.matcher(str); 
+          
+        // HashSet for quick check whether 
+        //  a word in str present in word[] or not 
+        HashSet<String> hs = new HashSet<String>(); 
+          
+        for (String string : word) { 
+            hs.add(string); 
+        } 
+          
+        while(m.find()) 
+        { 
+            if(hs.contains(m.group())) 
+                counter++; 
+        } 
+          
+        return counter; 
+          
+    } 
+      
+    public static void main(String[] args)  
+    { 
+        String word[] = { "i", "work", "in", "cognizant"}; 
+          
+        String str = "i work in cognizant"; 
+          
+        System.out.println(countOccurrence(word,str)); 
+          
+    } 
+  
+} 
+
+
+------------------------------------------------------------
+23. count the number of words in the string
+    Input string="i work in cognizant.";
+    output=4;
+
+
+
+import java.util.HashSet; 
+import java.util.regex.Matcher; 
+import java.util.regex.Pattern; 
+  
+public class Stwentytwo 
+{ 
+    static int countOccurrence(String[] word, String str)  
+    { 
+        // counter 
+        int counter = 0; 
+          
+        // for extracting words 
+        Pattern p = Pattern.compile("[a-zA-Z]+"); 
+        Matcher m = p.matcher(str); 
+          
+        // HashSet for quick check whether 
+        //  a word in str present in word[] or not 
+        HashSet<String> hs = new HashSet<String>(); 
+          
+        for (String string : word) { 
+            hs.add(string); 
+        } 
+          
+        while(m.find()) 
+        { 
+            if(hs.contains(m.group())) 
+                counter++; 
+        } 
+          
+        return counter; 
+          
+    } 
+      
+    public static void main(String[] args)  
+    { 
+        String word[] = { "i", "work", "in", "cognizant"}; 
+          
+        String str = "i work in cognizant"; 
+          
+        System.out.println(countOccurrence(word,str)); 
+          
+    } 
+  
+} 
+-----------------------------------------------------------
+24. Input1=”cowboy”; Output1=”cowcow”;
+    Input1=”so”;output1=”sososo”; 
+    HINT: if they give 3 letter word u have to display 2 time;
+
+
+
+
+-----------------------------------------------------------
+25. pan card number validation:
+    all letters shud be in caps,shud be of 8 chars.
+    first three letters must be alphabets.
+    next 4 letters shud be digits and last letter shud be an alphabet
+----------------------------------------------------------------------
+26. i/p: Honesty is my best policy
+    o/p: Honesty
+    Return the maximum word length from the given string.
+    If there are two words of same length then,
+    return the word which comes first based on alphabetical order.
+
+------------------------------------------------------------------
+27. In a string check whether all the vowels are present
+    if yes return 1 else 2.
+    ex: String 1="education"
+        output=1.
+
+
+import java.util.*; 
+  
+class Stwentyseven
+{ 
+  
+
+static boolean isVowel(char c) 
+{ 
+    return (c == 'a' || c == 'e' ||  
+            c == 'i' || c == 'o' || c == 'u'); 
+} 
+  
+
+static int countSubstringsUtil(char []s) 
+{ 
+    int count = 0; 
+  
+    Map<Character, Integer> mp = new HashMap<>(); 
+  
+    int n = s.length; 
+  
+    int start = 0; 
+  
+    for (int i = 0; i < n; i++)  
+    { 
+        if(mp.containsKey(s[i])) 
+        { 
+            mp.put(s[i], mp.get(s[i]) + 1); 
+        } 
+        else
+        { 
+            mp.put(s[i], 1); 
+        } 
+  
+      
+        while (mp.containsKey('a') && mp.containsKey('e') && 
+               mp.containsKey('i') && mp.containsKey('o') && 
+               mp.containsKey('u') && mp.get('a') > 0 &&  
+               mp.get('e') > 0 && mp.get('i') > 0 &&  
+               mp.get('o') > 0 && mp.get('u') > 0)  
+        { 
+            count += n - i; 
+            mp.put(s[start], mp.get(s[start]) - 1); 
+  
+            start++; 
+        } 
+    } 
+    return count; 
+} 
+  
+
+static int countSubstrings(String s) 
+{ 
+    int count = 0; 
+    String temp = ""; 
+  
+    for (int i = 0; i < s.length(); i++)  
+    { 
+  
+       
+        if (isVowel(s.charAt(i)))  
+        { 
+            temp += s.charAt(i); 
+        } 
+  
+      
+        else
+        { 
+  
+           
+            if (temp.length() > 0) 
+                count += countSubstringsUtil(temp.toCharArray()); 
+  
+           
+            temp = ""; 
+        } 
+    } 
+  
+   
+    if (temp.length() > 0) 
+        count += countSubstringsUtil(temp.toCharArray()); 
+  
+    return count; 
+} 
+  
+
+public static void main(String[] args)  
+{ 
+    String s = "education"; 
+  
+    System.out.println(countSubstrings(s)); 
+} 
+}  
+  
+--------------------------------------------------------------------
+28. swap the every 2 chrecters in the given string 
+    If size is odd number then keep the last letter as it is.
+    Ex:- input: forget
+	 output: ofgrte
+    Ex:- input  : NewYork
+         output : eNYwrok
+
+
+// Java program to count distinct strings with 
+// even odd swapping allowed. 
+import java.util.HashSet; 
+import java.util.Set; 
+class Stwentyeight{ 
+static int MAX_CHAR = 26; 
+  
+    static String encodeString(char[] str) { 
+        // hashEven stores the count of even indexed character 
+        // for each string hashOdd stores the count of odd 
+        // indexed characters for each string 
+        int hashEven[] = new int[MAX_CHAR]; 
+        int hashOdd[] = new int[MAX_CHAR]; 
+  
+        // creating hash for each string 
+        for (int i = 0; i < str.length; i++) { 
+            char c = str[i]; 
+            if ((i & 1) != 0) // If index of current character is odd 
+                hashOdd[c-'a']++; 
+            else
+                hashEven[c-'a']++; 
+  
+        } 
+  
+  
+        // For every character from 'a' to 'z', we store its 
+        // count at even position followed by a separator, 
+        // followed by count at odd position. 
+        String encoding = ""; 
+        for (int i = 0; i < MAX_CHAR; i++) { 
+            encoding += (hashEven[i]); 
+            encoding += ('-'); 
+            encoding += (hashOdd[i]); 
+            encoding += ('-'); 
+        } 
+        return encoding; 
+    } 
+  
+    // This function basically uses a hashing based set to 
+// store strings which are distinct according to according 
+// to criteria given in question. 
+    static int countDistinct(String input[], int n) { 
+        int countDist = 0; // Initialize result 
+  
+        // Create an empty set and store all distinct 
+        // strings in it. 
+        Set<String> s = new HashSet<>(); 
+        for (int i = 0; i < n; i++) { 
+            // If this encoding appears first time, increment 
+            // count of distinct encodings. 
+            if (!s.contains(encodeString(input[i].toCharArray()))) { 
+                s.add(encodeString(input[i].toCharArray())); 
+                countDist++; 
+            } 
+        } 
+  
+        return countDist; 
+    } 
+  
+    public static void main(String[] args) { 
+        String input[] = {"abcd", "acbd", "adcb", "cdba", 
+                "bcda", "badc"}; 
+        int n = input.length; 
+  
+        System.out.println(countDistinct(input, n)); 
+    } 
+} 
+---------------------------------------------------------------------
+29. input1="the sun raises in the east";
+    output1=raises;
+    count no vowels in each word and print the word which has max
+    no of vowels if two word has max no of vowel print the first one
+
+
+
+// Java program to count vowels in a string 
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Scanner;
+public class Stwentynine {
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+Scanner sc = new Scanner(System.in);
+String s = sc.nextLine();
+System.out.println(display(s));
+}
+ 
+public static int display(String s) {
+StringBuffer sb = new StringBuffer(s);
+int k = 0;
+LinkedHashSet<Character> l1 = new LinkedHashSet<Character>();
+String s2 = sb.reverse().toString();
+if (s2.equals(s)) {
+String s3 = s2.toLowerCase();
+ 
+for (int i = 0; i < s3.length(); i++) {
+l1.add(s3.charAt(i));
+}
+Iterator<Character> it = l1.iterator();
+while (it.hasNext()) {
+char a = it.next();
+ 
+if (a == 'a' || a == 'e' || a == 'i' || a == 'o' || a == 'u')
+k++;
+}
+}
+if (k >= 2)
+return 1;
+else
+return -1;
+ 
+}
+ 
+}
+ 
+-----------------------------------------------------------------------
+30.  Given a string s. Return all the words vertically in the same order in 
+which they appear in s.
+Words are returned as a list of strings, complete with spaces when is 
+necessary. (Trailing spaces are not allowed).
+Each word would be put on only one column and that in one column there will
+be only one word.
+
+Input: s = "HOW ARE YOU"
+Output: ["HAY","ORO","WEU"]
+Explanation: Each word is printed vertically. 
+ "HAY"
+ "ORO"
+ "WEU"
+------------
+Input: s = "TO BE OR NOT TO BE"
+Output: ["TBONTB","OEROOE","   T"]
+Explanation: Trailing spaces is not allowed. 
+"TBONTB"
+"OEROOE"
+"   T"
