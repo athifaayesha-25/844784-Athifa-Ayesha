@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> 
+        <!-- bean definitions here -->
+<!-- XML FILE MANAGED BY LOC CONTAINER -->
+<!-- BEAN CLASS DEPENDENCY INJECTION -->
+<bean id="Bean1" class="spring.FirstBean">
+<!-- setter injection -->
+<property name="name" value="Thananya"/>
+</bean>
+<bean id="myaddress" class="spring.Address">
+<constructor-arg value="Chennai"/>
+<constructor-arg value="India"/>
+</bean>
+<bean id="myemployee1" class="spring.EmployeeBean">
+<constructor-arg value="1001"></constructor-arg>
+<constructor-arg value="Thananya"></constructor-arg>
+<constructor-arg>
+<!-- inner beans -->
+<ref bean="myaddress"/>
+</constructor-arg>
+</bean>
+<bean id="stud" class="spring.Student" abstract="true">
+<!-- setter injection -->
+<property name="sid" value="1001"></property>
+<property name="name" value="athifa"></property>
+</bean>
+<bean id="course1" class="spring.Student_Course" parent="stud">
+<!-- overriding parent class property -->
+<property name="name" value="ayesha"></property>
+<property name="cid" value="1"></property>
+<property name="cname" value="suparna"></property>
+</bean>
+
+
+<context:property-placeholder location="classpath:springuser.properties,mydb.properties"/>
+<bean id="prop1" class="spring.User_properties">
+<property name="user" value="${u1}"/>
+<property name="role" value="${r1}"/>
+<property name="email" value="${e1}"/>
+</bean>
+
+<bean id="b11" class="spring.Branch">
+<property name="city" value="Trichy"></property>
+<property name="state" value="Tamilnadu"></property>
+</bean>
+
+<bean id="bank_aw" class="spring.Bank">
+<property name="bankname" value="SBI"></property>
+<property name="mgrname" value="Devi"></property>
+<!-- ref tag in property -->
+<property name="b1" ref="b11"></property>
+</bean>
+
+<!-- Autowiring:
+Autowiring feature of spring framework enables you to inject the object dependency implicitly.
+It internally uses setter or constructorinjection.Autowiring can't be used to inject primitive
+and string values.It works with reference only.The autowiring functionality has for modes.
+These are 'no','byName','byType', and 'constructor'.Default is 'no'
+**NO REFTAG -->
+
+<bean id="b1" class="spring.Branch">
+<property name="city" value="Chennai"></property>
+<property name="state" value="Tamilnadu"></property>
+</bean>
+
+<!-- 
+mapping the bean exact(same)object called b1 if
+using autowire=byName
+BYNAME(MAPPING BEAN CLASS(B1) TO ID(B1) -->
+
+<bean id="bank_aw1" class="spring.Bank"
+autowire="byName">
+<!-- byName means BYPROPERTYNAME -->
+<property name="bankname" value="SBI"></property>
+<property name="mgrname" value="Devi"></property>
+</bean>
+
+ 
+<!-- AUTOWIRING CONSTRUCTOR -->
+<!-- REF TAG NOT REQUIRED-->
+<bean id="myemployee2" class="spring.EmployeeBean" autowire="constructor">
+<constructor-arg value="1" type="int"></constructor-arg>
+<constructor-arg value="Athifa"></constructor-arg>
+</bean>
+
+
+<!-- Autowiring Annotation -->
+<!-- Used to activate the @Autowired annotation in Spring -->
+<context:annotation-config/>
+<bean id="b18" class="spring.Branch">
+<property name="city" value="Bangalore"></property>
+<property name="state" value="Karnataka"></property>
+</bean>
+<!-- no autowire and ref tag 
+but autowire annotation used in bean class-->
+
+<bean id="anno1"
+class="spring.Bank_AutoWire">
+<property name="bankname" value="AXIS"></property>
+<property name="mgrname" value="Raja"></property>
+</bean>
+
+
+<bean id="obj1" class="spring.Vendor_Collection">
+<property name="vid" value="101"></property>
+<property name="vendorname" value="BLT"></property>
+<property name="cus_name">
+<list>
+<value>CTS</value>
+<value>TCS</value>
+<value>ZOHO</value>
+<value>ZOHO</value>
+</list>
+</property>
+</bean>
+
+
+<bean id="tr1" class="spring.Technology_coll">
+<property name="tech_name" value="Servlets"></property>
+<property name="assessment" value="No"></property>
+</bean>
+<bean id="tr2" class="spring.Technology_coll">
+<property name="tech_name" value="JSP"></property>
+<property name="assessment" value="No"></property>
+</bean>
+<bean id="tco1" class="spring.Training_Collection">
+<property name="batchno" value="2"></property>
+<property name="projectname" value="Insurance"></property>
+<property name="tc1">
+<list>
+<!-- collection injection with ref tag -->
+<ref bean="tr1"/>
+<ref bean="tr2"/>
+</list>
+</property>
+</bean>
+
+
+
+<bean id="asmap1" class="spring.Assessment_MapCollection">
+<property name="sid" value="1"></property>
+<property name="sname" value="Thananya"></property>
+<property name="test_details">
+<map>
+<entry key="JSTL" value="Yes"></entry>
+<entry key="EJB" value="No"></entry>
+
+<!-- overriding -->
+<entry key="EJB" value="Yes"></entry
+></map>
+</property>
+</bean>
+
+
+
+<bean id="obj11" class="spring.Vendor1_Collect">
+<constructor-arg name="vid1" value="1011"></constructor-arg>
+<constructor-arg name="vendorname1" value="BLT1"></constructor-arg>
+<constructor-arg name="cus_name1">
+<list>
+<value>CTS1</value>
+<value>TCS1</value>
+<value>ZOHO1</value>
+<value>ZOHO1</value>
+</list>
+</constructor-arg>
+</bean>
+
+
+<bean id="database1" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<property name="driverClassName" value="${driver}"/>
+<property name="url" value="${dburl}"/>
+<property name="username" value="${dbuser}"/>
+<property name="password" value="${dbpassword}"/>
+</bean>
+<bean id="mydatabase" class="com.dao.Employee_JdbcTemplate1">
+<property name="datasource" ref="database1"/>
+</bean>
+
+
+<!-- automically scan all the classes inside the package,which are marked with 
+@component' annotation. -->
+<context:component-scan base-package="spring"/>
+</beans>
